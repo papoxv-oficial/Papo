@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="notranslate" translate="no">
 <head>
     <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>papoxv | Aplicaciones Pro</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
-            background: radial-gradient(circle, #2a0000 0%, #050000 100%); 
-            color: #ffffff; 
+            background: radial-gradient(circle, #2a0000 0%, #050000 100%) !important; 
+            color: #ffffff !important; 
             font-family: 'Segoe UI', Roboto, sans-serif; 
             min-height: 100vh; 
             padding: 120px 20px 40px 20px; 
@@ -45,14 +46,15 @@
         }
 
         .search-container { max-width: 500px; margin: 20px auto 30px auto; display: flex; justify-content: center; width: 100%; }
-        .search-input { width: 100%; padding: 14px 20px; background: rgba(0, 0, 0, 0.6); border: 2px solid #ff0000; border-radius: 30px; color: #ffffff; font-size: 1rem; outline: none; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); transition: all 0.3s ease; text-align: center; }
+        .search-input { width: 100%; padding: 14px 20px; background: rgba(0, 0, 0, 0.6) !important; border: 2px solid #ff0000; border-radius: 30px; color: #ffffff; font-size: 1rem; outline: none; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); transition: all 0.3s ease; text-align: center; }
         .search-input::placeholder { color: #888888; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
         .search-input:focus { box-shadow: 0 0 25px #ff0000; background: rgba(15, 5, 5, 0.8); }
         
         .grid-container { display: flex; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; justify-content: center; }
         
+        /* TARJETAS TRANSLÚCIDAS MEJORADAS */
         .card { 
-            background: rgba(15, 5, 5, 0.5); 
+            background: rgba(15, 5, 5, 0.5) !important; 
             border: 2px solid #ff0000; 
             border-radius: 20px; 
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); 
@@ -201,38 +203,27 @@
         </a>
     </div>
 
-    <script>
-        const searchInput = document.querySelector('.search-input');
-        if (searchInput) {
-            searchInput.addEventListener('input', function(e) {
-                let texto = e.target.value.toLowerCase().trim();
-                document.querySelectorAll('.grid-container .card').forEach(function(card) {
-                    let titulo = card.querySelector('.card-title').textContent.toLowerCase();
-                    card.style.display = titulo.includes(texto) ? 'flex' : 'none';
+    <script type="text/javascript">
+        // Forzamos que las funciones se ejecuten de forma nativa e inmune
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const input = document.querySelector('.search-input');
+            if (input) {
+                input.addEventListener('input', function(e) {
+                    const texto = e.target.value.toLowerCase().trim();
+                    document.querySelectorAll('.card').forEach(function(card) {
+                        const titulo = card.querySelector('.card-title').textContent.toLowerCase();
+                        card.style.setProperty('display', titulo.includes(texto) ? 'flex' : 'none', 'important');
+                    });
                 });
-            });
-        }
+            }
 
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mousemove', function(e) {
-                const box = this.getBoundingClientRect();
-                const x = e.clientX - box.left - (box.width / 2);
-                const y = e.clientY - box.top - (box.height / 2);
-                
-                const rotarX = -(y / box.height) * 20;
-                const rotarY = (x / box.width) * 20;
-                
-                this.style.transform = `rotateX(${rotarX}deg) rotateY(${rotarY}deg) scale(1.03)`;
-                this.style.boxShadow = "0 15px 35px rgba(255, 0, 0, 0.6)";
-                this.style.borderColor = "#ff4d4d";
-                this.style.background = "rgba(42, 0, 0, 0.3)";
-            });
-
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-                this.style.boxShadow = "0 0 20px rgba(255, 0, 0, 0.4)";
-                this.style.borderColor = "#ff0000";
-                this.style.background = "rgba(15, 5, 5, 0.5)";
-            });
-        });
-
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const box = this.getBoundingClientRect();
+                    const x = e.clientX - box.left - (box.width / 2);
+                    const y = e.clientY - box.top - (box.height / 2);
+                    const rotarX = -(y / box.height) * 20;
+                    const rotarY = (x / box.width) * 20;
+                    
+                    this.style.setProperty('transform', `rotateX(${rotarX}deg) rotateY(${rotarY}deg) scale(1.03)`, 'important');
+                    this.style.setProperty('box-shadow', '0 15px 35px rgba(255, 0, 0, 0.6)', 'important');
