@@ -3,30 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>papoxv | Inicio</title>
+    <title>PAPOXV | Inicio</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: radial-gradient(circle, #2a0000 0%, #050000 100%); color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; min-height: 100vh; padding: 120px 20px 40px 20px; }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(5, 0, 0, 0.95); border-bottom: 2px solid rgba(255, 0, 0, 0.3); display: flex; justify-content: center; gap: 25px; padding: 18px; z-index: 1000; }
-        .nav-link { color: #b3b3b3; text-decoration: none; font-size: 1rem; font-weight: bold; text-transform: uppercase; }
-        .nav-link.active { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-        .welcome-container { text-align: center; max-width: 800px; margin: 50px auto; padding: 20px; }
-        h1 { font-size: 3rem; margin-bottom: 20px; color: #ff0000; text-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
-        p { font-size: 1.2rem; color: #b3b3b3; line-height: 1.6; }
+        /* Reseteo básico */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        /* Fondo degradado oscuro original */
+        body { 
+            background: radial-gradient(circle, #2a0000 0%, #050000 100%); 
+            color: #ffffff; 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 20px; 
+        }
+        
+        /* Título PAPOXV con efecto neón rojo */
+        .logo { 
+            font-size: 4rem; 
+            font-weight: 900; 
+            color: #ff0000; 
+            text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000; 
+            margin-bottom: 40px; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+        }
+        
+        /* Contenedor de los botones del centro */
+        .menu-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+            width: 100%; 
+            max-width: 600px; 
+        }
+        
+        /* Botones gigantes con bordes rojos brillantes */
+        .menu-btn { 
+            display: block; 
+            width: 100%; 
+            padding: 25px; 
+            background: #000000; 
+            border: 2px solid #ff0000; 
+            border-radius: 16px; 
+            color: #ffffff; 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            text-decoration: none; 
+            text-align: center; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); 
+        }
+        
+        /* Efecto al pasar el mouse por encima de los botones */
+        .menu-btn:hover { 
+            transform: scale(1.02); 
+            box-shadow: 0 0 25px #ff0000; 
+            background: rgba(42, 0, 0, 0.4); 
+        }
+        
+        /* Pie de página */
+        footer { 
+            margin-top: 50px; 
+            font-size: 0.85rem; 
+            color: #555555; 
+            text-align: center; 
+        }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="indice.html" class="nav-link active">Inicio</a>
-        <a href="juegos.html" class="nav-link">Juegos</a>
-        <a href="aplicaciones.html" class="nav-link">Aplicaciones</a>
-        <a href="pc.html" class="nav-link">Windows & Office</a>
+
+    <!-- Tu logotipo original -->
+    <div class="logo">PAPOXV</div>
+
+    <!-- Menú de navegación principal con rutas relativas corregidas -->
+    <div class="menu-container">
+        <a href="juegos.html" class="menu-btn">Juegos</a>
+        <a href="aplicaciones.html" class="menu-btn">Aplicaciones</a>
+        <a href="pc.html" class="menu-btn">Windows & Office</a>
     </div>
-    <div class="welcome-container">
-        <h1>Bienvenido a Papoxv</h1>
-        <p>Selecciona una categoría en el menú superior para explorar los mejores contenidos, juegos y herramientas disponibles.</p>
-    </div>
+
+    <!-- Tu pie de página original -->
+    <footer>
+        © 2026 papoxv | Todos los derechos reservados.
+    </footer>
+
 </body>
 </html>
-
-
