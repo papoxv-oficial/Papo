@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAPOXV | Inicio</title>
     <style>
+        /* Reseteo básico */
         * { 
             box-sizing: border-box; 
             margin: 0; 
             padding: 0; 
         }
         
+        /* Fondo degradado original quieto */
         body { 
             background: radial-gradient(circle, #2a0000 0%, #050000 100%); 
             color: #ffffff; 
@@ -19,34 +21,13 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            justify-content: flex-start; 
-            padding: 60px 20px; 
+            justify-content: center; 
+            padding: 20px; 
             position: relative;
             overflow-x: hidden;
         }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle, rgba(255, 0, 0, 0.4) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255, 0, 0, 0.3) 2px, transparent 2px);
-            background-size: 100px 100px, 150px 150px;
-            background-position: 0 0, 50px 50px;
-            animation: flotarParticulas 20s linear infinite;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        @keyframes flotarParticulas {
-            from { background-position: 0 0, 50px 50px; }
-            to { background-position: 0 -300px, 50px -350px; }
-        }
         
+        /* Título PAPOXV con efecto neón rojo original */
         .logo { 
             font-size: 4rem; 
             font-weight: 900; 
@@ -55,19 +36,18 @@
             margin-bottom: 40px; 
             letter-spacing: 2px; 
             text-transform: uppercase; 
-            z-index: 2;
         }
         
+        /* Contenedor de los botones */
         .menu-container { 
             display: flex; 
             flex-direction: column; 
             gap: 20px; 
             width: 100%; 
             max-width: 600px; 
-            z-index: 2;
-            margin-bottom: 50px;
         }
         
+        /* BOTONES ORIGINALES TRANSLÚCIDOS */
         .menu-btn { 
             display: block; 
             width: 100%; 
@@ -91,84 +71,13 @@
             box-shadow: 0 0 25px #ff0000; 
             background: rgba(42, 0, 0, 0.6); 
         }
-
-        /* Nueva sección de novedades vacana */
-        .destacados-section {
-            width: 100%;
-            max-width: 600px;
-            z-index: 2;
-            margin-bottom: 30px;
-        }
-
-        .destacados-title {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ff4d4d;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .destacados-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .destacado-card {
-            display: flex;
-            align-items: center;
-            background: #000000;
-            border: 1px solid rgba(255, 0, 0, 0.4);
-            border-radius: 12px;
-            padding: 15px;
-            text-decoration: none;
-            color: #ffffff;
-            transition: all 0.3s ease;
-        }
-
-        .destacado-card:hover {
-            border-color: #ff0000;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
-            transform: translateX(5px);
-        }
-
-        .destacado-img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            margin-right: 15px;
-        }
-
-        .destacado-info {
-            flex-grow: 1;
-        }
-
-        .destacado-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-
-        .destacado-tag {
-            font-size: 0.8rem;
-            color: #ff0000;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .destacado-flecha {
-            font-size: 1.2rem;
-            color: #ff0000;
-            margin-left: 10px;
-        }
         
+        /* Pie de página original */
         footer { 
-            margin-top: 30px; 
+            margin-top: 50px; 
             font-size: 0.85rem; 
             color: #555555; 
             text-align: center; 
-            z-index: 2;
         }
     </style>
 </head>
@@ -180,34 +89,6 @@
         <a href="juegos.html" class="menu-btn">Juegos 🎮</a>
         <a href="aplicaciones.html" class="menu-btn">Aplicaciones ⚙️</a>
         <a href="pc.html" class="menu-btn">Windows & Office 💿</a>
-    </div>
-
-    <!-- SECCIÓN DE NOVEDADES AGREGADA -->
-    <div class="destacados-section">
-        <div class="destacados-title">🔥 LO MÁS POPULAR</div>
-        <div class="destacados-grid">
-            
-            <!-- Item 1: Directo a Juegos -->
-            <a href="juegos.html" class="destacado-card">
-                <img class="destacado-img" src="minecraft.png" alt="Minecraft">
-                <div class="destacado-info">
-                    <div class="destacado-name">Minecraft Shaders</div>
-                    <div class="destacado-tag">Juegos</div>
-                </div>
-                <div class="destacado-flecha">➜</div>
-            </a>
-
-            <!-- Item 2: Directo a Aplicaciones -->
-            <a href="aplicaciones.html" class="destacado-card">
-                <img class="destacado-img" src="capcut.png" alt="CapCut">
-                <div class="destacado-info">
-                    <div class="destacado-name">CapCut Pro</div>
-                    <div class="destacado-tag">Aplicaciones</div>
-                </div>
-                <div class="destacado-flecha">➜</div>
-            </a>
-
-        </div>
     </div>
 
     <footer>
