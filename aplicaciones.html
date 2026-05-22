@@ -8,7 +8,6 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        /* 2. AURORA LÍQUIDA (Fondo inteligente con transición suave) */
         body { 
             background: radial-gradient(circle, #2a0000 0%, #050000 100%); 
             color: #ffffff; 
@@ -20,7 +19,6 @@
             transition: background 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
         
-        /* NAVBAR SUPERIOR */
         .navbar { 
             position: fixed; 
             top: 0; 
@@ -38,20 +36,18 @@
         .nav-link { color: #b3b3b3; text-decoration: none; font-size: 1rem; font-weight: bold; text-transform: uppercase; }
         .nav-link.active { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
 
-        /* 3. BARRA DE PROGRESO DE LECTURA (Línea milimétrica roja de scroll) */
         .progress-bar-scroll {
             position: fixed;
-            top: 56px; /* Justo abajo del navbar */
+            top: 56px; 
             left: 0;
             height: 3px;
             background: #ff0000;
             box-shadow: 0 0 10px #ff0000;
             width: 0%;
-            z-index: 1001;
+            z-index: 1010;
             transition: width 0.1s ease;
         }
 
-        /* 3. TÍTULO CON FALLA DE SEÑAL (Animación Cyber Glitch) */
         .section-title {
             text-align: center;
             font-size: 2.2rem;
@@ -72,7 +68,6 @@
             100% { text-shadow: 2px 2px #ff0000, -2px -2px #00c6ff; transform: translate(0, 0); }
         }
 
-        /* 1. TACÓMETRO DE BÚSQUEDA (Need for Speed - Buscador Curvo con Medidor de RPM) */
         .search-wrapper {
             position: relative;
             max-width: 500px;
@@ -98,7 +93,6 @@
         .search-input::placeholder { color: #666666; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
         .search-input:focus { box-shadow: 0 0 25px #ff0000; }
         
-        /* Arcos del tacómetro digital que se iluminan al escribir */
         .tacometro-arc {
             position: absolute;
             top: -5px; bottom: -5px; left: 15px; right: 15px;
@@ -115,25 +109,25 @@
             transform: scaleX(1.03) scaleY(1.08);
         }
 
-        /* 1. SISTEMA DE CARTAS STEAM DECK (Carrusel Horizontal Infinito Centrado) */
+        /* AJUSTE DE CONTENEDOR STEAM DECK */
         .slider-wrapper {
             width: 100%;
             overflow-x: auto;
             padding: 40px 20px;
             display: flex;
-            justify-content: flex-start;
-            scroll-behavior: smooth;
+            justify-content: center; /* Centra el bloque de tarjetas */
         }
-        /* Ocultar barra de scroll rústica */
         .slider-wrapper::-webkit-scrollbar { display: none; }
         
         .grid-container { 
             display: flex; 
-            gap: 40px; 
-            padding: 0 40%; /* Deja espacio a los lados para centrar las cartas estilo consola */
+            gap: 30px; 
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center; /* Permite visualizar las tarjetas sin tirarlas fuera */
+            flex-wrap: nowrap;
         }
         
-        /* TARJETAS TRANSLÚCIDAS CON DINÁMICA DE ENFOQUE */
         .card { 
             background: rgba(15, 5, 5, 0.6); 
             border: 2px solid rgba(255, 0, 0, 0.3); 
@@ -145,16 +139,15 @@
             align-items: center; 
             text-align: center; 
             min-height: 420px; 
-            width: 320px; /* Tamaño fijo para el carrusel de Steam Deck */
+            width: 320px; 
             justify-content: space-between;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             transform-style: preserve-3d;
             flex-shrink: 0;
         }
         
-        /* La tarjeta que tiene el mouse encima o queda enfocada resalta al estilo Steam Deck */
         .card:hover, .card.focused { 
-            transform: scale(1.08) translateY(-10px);
+            transform: scale(1.06) translateY(-10px);
             border-color: #ff0000;
             box-shadow: 0 15px 30px rgba(255, 0, 0, 0.4);
             background: rgba(25, 5, 5, 0.5);
@@ -170,12 +163,10 @@
         .btn-download { background: #a200ff; box-shadow: 0 4px 10px rgba(162, 0, 255, 0.3); }
         .btn-action:hover { filter: brightness(1.2); transform: translateY(-3px); }
 
-        /* NOTIFICACIONES */
         #notification-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
         .toast-notification { background: rgba(0, 0, 0, 0.9); border: 2px solid #ff0000; border-radius: 12px; padding: 16px 28px; color: #ffffff; font-weight: bold; box-shadow: 0 0 25px rgba(255, 0, 0, 0.7); display: flex; align-items: center; opacity: 0; transform: translateY(20px); transition: all 0.3s ease; }
         .toast-notification.show { opacity: 1; transform: translateY(0); }
 
-        /* 3. REPRODUCTOR EXPANSIV0 HOLOGRÁFICO (Apple Store Overlay) */
         .video-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -215,12 +206,9 @@
         <a href="pc.html" class="nav-link">Windows & Office</a>
     </div>
 
-    <!-- Barra milimétrica de progreso -->
     <div class="progress-bar-scroll" id="scrollBar"></div>
-
     <div id="notification-container"></div>
 
-    <!-- Ventana expansible estilo Apple Store -->
     <div class="video-overlay" id="videoOverlay">
         <div class="hologram-window">
             <h2 id="overlayTitle" style="color: #ff0000; text-transform: uppercase; letter-spacing: 1px;">Tutorial</h2>
@@ -231,3 +219,19 @@
 
     <h1 class="section-title" id="mainTitle">Aplicaciones Pro</h1>
 
+    <div class="search-wrapper">
+        <div class="tacometro-arc" id="rpmArc"></div>
+        <input type="text" class="search-input" placeholder="🔍 Buscar aplicación...">
+    </div>
+
+    <div class="slider-wrapper" id="sliderWrapper">
+        <div class="grid-container">
+            
+            <div class="card" data-color="radial-gradient(circle, #3a005c 0%, #050000 100%)">
+                <div>
+                    <div class="card-title">Loquendo Voice</div>
+                    <div class="card-subtitle">(Portable PC)</div>
+                </div>
+                <img class="card-img" src="https://nocookie.net" alt="Loquendo">
+                <div class="btn-group">
+                    <button class="btn-action btn-tutorial btn-expand" data-name="Loquendo Voice">Ver Tutorial</button>
