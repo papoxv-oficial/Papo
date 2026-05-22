@@ -17,7 +17,7 @@
             color: #ffffff;
             font-family: 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
-            padding: 140px 20px 40px;
+            padding: 120px 0 40px;
             overflow-x: hidden;
             overflow-y: auto;
             transition: background 0.8s ease;
@@ -49,7 +49,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
             text-align: center;
         }
@@ -57,7 +57,8 @@
         .search-box {
             position: relative;
             max-width: 500px;
-            margin: 30px auto 50px;
+            margin: 30px auto 40px;
+            padding: 0 20px;
         }
         .search-box input {
             width: 100%;
@@ -116,46 +117,73 @@
         }
 
         /* ==========================================
-           REJILLA DE TARJETAS CORREGIDA (GRID)
+           CARRUSEL HORIZONTAL ESTILO STEAM DECK (SNARE & FOCUS)
            ========================================== */
-        .grid-apps {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 30px;
-            padding: 20px 10px;
+        .carrusel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 40px 0;
+        }
+
+        .carrusel-contenedor {
+            display: flex;
+            gap: 40px;
+            overflow-x: auto;
+            padding: 20px 50vw; /* Permite que la primera y última tarjeta lleguen al centro */
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            cursor: grab;
+            scroll-snap-type: x mandatory; /* Fuerza a las tarjetas a encajar magnéticamente */
+        }
+        .carrusel-contenedor::-webkit-scrollbar {
+            display: none;
+        }
+        .carrusel-contenedor:active {
+            cursor: grabbing;
         }
 
         .tarjeta-app {
-            background: rgba(10, 10, 10, 0.85);
-            border: 2px solid #1a1a1a;
-            border-radius: 16px;
-            padding: 30px 20px;
+            flex: 0 0 280px; /* Ancho fijo para que no se deformen jamás */
+            background: rgba(15, 15, 15, 0.9);
+            border: 2px solid #222;
+            border-radius: 20px;
+            padding: 35px 25px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            scroll-snap-align: center; /* Alineación magnética al centro */
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-        }
-        .tarjeta-app:hover {
-            transform: translateY(-10px);
-            border-color: #ff0000;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+            opacity: 0.4; /* Apagadas por defecto si no están centradas */
+            transform: scale(0.85);
         }
         
-        /* Contenedor para evitar que la imagen rota dañe el diseño */
+        /* LA TARJETA EN FOCUS (ACTIVADA POR JS) */
+        .tarjeta-app.focused {
+            opacity: 1;
+            transform: scale(1.1) translateY(-10px);
+            border-color: #ff0000;
+            box-shadow: 0 0 35px rgba(255, 0, 0, 0.5), inset 0 0 15px rgba(255, 0, 0, 0.2);
+        }
+        
         .img-box {
-            width: 90px;
-            height: 90px;
+            width: 100px;
+            height: 100px;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: #111;
-            border-radius: 20px;
-            border: 1px solid #222;
+            background: #0d0d0d;
+            border-radius: 22px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+        .tarjeta-app.focused .img-box {
+            transform: scale(1.05);
+            border-color: #ff0000;
         }
         .tarjeta-app img {
             width: 100%;
@@ -164,16 +192,18 @@
         }
         
         .tarjeta-app h3 {
-            font-size: 19px;
-            margin-bottom: 20px;
+            font-size: 20px;
+            margin-bottom: 25px;
             color: #fff;
             font-weight: 600;
+            letter-spacing: 0.5px;
         }
+        
         .btn-tutorial {
             background: transparent;
             border: 2px solid #ff0000;
             color: #fff;
-            padding: 10px 22px;
+            padding: 10px 24px;
             border-radius: 25px;
             cursor: pointer;
             font-size: 13px;
@@ -181,11 +211,25 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            width: 80%;
+            width: 85%;
+            opacity: 0; /* Oculto si la tarjeta no está centrada */
+            pointer-events: none;
+        }
+        .tarjeta-app.focused .btn-tutorial {
+            opacity: 1;
+            pointer-events: auto;
         }
         .btn-tutorial:hover {
             background: #ff0000;
             box-shadow: 0 0 20px #ff0000;
+        }
+
+        .swipe-hint {
+            color: #444;
+            font-size: 13px;
+            margin-top: 25px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         /* ==========================================
@@ -247,37 +291,3 @@
     <div class="container">
         
         <!-- TÍTULO CON EFECTO GLITCH -->
-        <h1 class="glitch-title" data-text="APLICACIONES">APLICACIONES</h1>
-
-        <!-- BARRA DE BÚSQUEDA -->
-        <div class="search-box">
-            <input type="text" placeholder="Buscar aplicación...">
-        </div>
-
-        <!-- REJILLA DE TARJETAS LLENA (12 APPS PARA PROBAR EL SCROLL HACIA ABAJO) -->
-        <div class="grid-apps">
-            
-            <!-- 1. Minecraft (Aurora Verde) -->
-            <div class="tarjeta-app" data-color="#0c2e0c">
-                <div class="img-box">
-                    <img src="https://github.io" alt="Minecraft">
-                </div>
-                <h3>Minecraft Pro</h3>
-                <button class="btn-tutorial" data-video="d968_MvM_tI">Tutorial</button>
-            </div>
-
-            <!-- 2. CapCut (Aurora Azul - Simula imagen rota) -->
-            <div class="tarjeta-app" data-color="#002244">
-                <div class="img-box">
-                    <img src="ruta-invalida-para-forzar-error.png" alt="CapCut">
-                </div>
-                <h3>CapCut Mod</h3>
-                <button class="btn-tutorial" data-video="d968_MvM_tI">Tutorial</button>
-            </div>
-
-            <!-- 3. TikTok (Aurora Morada) -->
-            <div class="tarjeta-app" data-color="#2a0033">
-                <div class="img-box">
-                    <img src="https://github.io" alt="TikTok">
-                </div>
-                <h3>TikTok Premium</h3>
