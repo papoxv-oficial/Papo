@@ -17,23 +17,23 @@
             color: #ffffff;
             font-family: 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
-            padding: 120px 0 40px; /* Quitamos padding lateral para el carrusel completo */
+            padding: 140px 20px 40px;
             overflow-x: hidden;
             overflow-y: auto;
             transition: background 0.8s ease;
             background-attachment: fixed;
         }
 
-        /* Nav de la página */
+        /* Nav superior de PAPOXV */
         nav {
             position: fixed;
             top: 0; left: 0; width: 100%;
             height: 60px; background: rgba(0,0,0,0.9);
             display: flex; justify-content: center; align-items: center;
-            gap: 20px; z-index: 999;
+            gap: 25px; z-index: 999;
             border-bottom: 1px solid #111;
         }
-        nav a { color: #aaa; text-decoration: none; font-weight: bold; font-size: 14px; text-transform: uppercase; }
+        nav a { color: #aaa; text-decoration: none; font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
         nav a.active { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
 
         /* ==========================================
@@ -49,7 +49,7 @@
         }
 
         .container {
-            max-width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
@@ -57,13 +57,12 @@
         .search-box {
             position: relative;
             max-width: 500px;
-            margin: 40px auto 40px;
-            padding: 0 20px;
+            margin: 30px auto 50px;
         }
         .search-box input {
             width: 100%;
             padding: 15px 20px;
-            background: #0a0a0a;
+            background: rgba(15, 15, 15, 0.8);
             border: 2px solid #222;
             border-radius: 30px;
             color: #fff;
@@ -88,7 +87,7 @@
             text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .glitch-active::before,
         .glitch-active::after {
@@ -117,65 +116,58 @@
         }
 
         /* ==========================================
-           SISTEMA DE DESPLAZAMIENTO HORIZONTAL (STEAM DECK STYLE)
+           REJILLA DE TARJETAS CORREGIDA (GRID)
            ========================================== */
-        .carrusel-contenedor {
-            width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 40px 50px;
-            white-space: nowrap;
-            scroll-behavior: smooth;
-            cursor: grab;
-            scrollbar-width: none; /* Oculta barra en Firefox */
-        }
-        .carrusel-contenedor::-webkit-scrollbar {
-            display: none; /* Oculta barra en Chrome/Safari */
-        }
-        .carrusel-contenedor:active {
-            cursor: grabbing;
+        .grid-apps {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 30px;
+            padding: 20px 10px;
         }
 
         .tarjeta-app {
-            display: inline-block;
-            vertical-align: top;
-            width: 260px;
             background: rgba(10, 10, 10, 0.85);
             border: 2px solid #1a1a1a;
             border-radius: 16px;
             padding: 30px 20px;
-            margin-right: 25px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
-            white-space: normal; /* Permite saltos de línea normales adentro */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        
-        /* Efecto de enfoque e iluminación 3D al pasar el mouse */
         .tarjeta-app:hover {
-            transform: translateY(-15px) scale(1.03);
+            transform: translateY(-10px);
             border-color: #ff0000;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.4), inset 0 0 15px rgba(255, 0, 0, 0.1);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
         }
         
-        .tarjeta-app img {
+        /* Contenedor para evitar que la imagen rota dañe el diseño */
+        .img-box {
             width: 90px;
             height: 90px;
-            object-fit: cover;
-            border-radius: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #111;
+            border-radius: 20px;
+            border: 1px solid #222;
         }
-        .tarjeta-app:hover img {
-            transform: scale(1.08);
+        .tarjeta-app img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
+        
         .tarjeta-app h3 {
             font-size: 19px;
             margin-bottom: 20px;
             color: #fff;
             font-weight: 600;
-            letter-spacing: 0.5px;
         }
         .btn-tutorial {
             background: transparent;
@@ -188,28 +180,12 @@
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 0 5px rgba(255,0,0,0.2);
             transition: all 0.3s ease;
+            width: 80%;
         }
         .btn-tutorial:hover {
             background: #ff0000;
             box-shadow: 0 0 20px #ff0000;
-            transform: scale(1.05);
-        }
-
-        /* Indicador visual de deslizar inferior */
-        .swipe-hint {
-            color: #555;
-            font-size: 12px;
-            margin-top: 15px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 0.4; }
-            50% { opacity: 1; }
-            100% { opacity: 0.4; }
         }
 
         /* ==========================================
@@ -278,9 +254,30 @@
             <input type="text" placeholder="Buscar aplicación...">
         </div>
 
-        <!-- CONTENEDOR FLUIDO DEL CARRUSEL DE DESPLAZAMIENTO -->
-        <div class="carrusel-contenedor" id="carrusel">
+        <!-- REJILLA DE TARJETAS LLENA (12 APPS PARA PROBAR EL SCROLL HACIA ABAJO) -->
+        <div class="grid-apps">
             
             <!-- 1. Minecraft (Aurora Verde) -->
             <div class="tarjeta-app" data-color="#0c2e0c">
-                <img src="https://github.io" alt="Minecraft">
+                <div class="img-box">
+                    <img src="https://github.io" alt="Minecraft">
+                </div>
+                <h3>Minecraft Pro</h3>
+                <button class="btn-tutorial" data-video="d968_MvM_tI">Tutorial</button>
+            </div>
+
+            <!-- 2. CapCut (Aurora Azul - Simula imagen rota) -->
+            <div class="tarjeta-app" data-color="#002244">
+                <div class="img-box">
+                    <img src="ruta-invalida-para-forzar-error.png" alt="CapCut">
+                </div>
+                <h3>CapCut Mod</h3>
+                <button class="btn-tutorial" data-video="d968_MvM_tI">Tutorial</button>
+            </div>
+
+            <!-- 3. TikTok (Aurora Morada) -->
+            <div class="tarjeta-app" data-color="#2a0033">
+                <div class="img-box">
+                    <img src="https://github.io" alt="TikTok">
+                </div>
+                <h3>TikTok Premium</h3>
