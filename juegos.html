@@ -42,6 +42,7 @@
         <input type="text" class="search-input" placeholder="🔍 Buscar juego...">
     </div>
     <div class="grid-container">
+        <!-- 1. Minecraft Shaders -->
         <div class="card">
             <div>
                 <div class="card-title">Minecraft Shaders</div>
@@ -52,14 +53,80 @@
                 <a href="#" class="btn-action btn-tutorial">Ver Tutorial</a>
                 <a href="#" class="btn-action btn-download btn-notify" data-name="Minecraft Shaders">Descargar</a>
             </div>
-            
+        </div>
+
+        <!-- 2. Free Fire Max -->
+        <div class="card">
+            <div>
+                <div class="card-title">Free Fire Max</div>
+                <div class="card-subtitle">(Auto Apuntado)</div>
+            </div>
+            <img class="card-img" src="freefire.png" alt="Free Fire">
+            <div class="btn-group">
+                <a href="#" class="btn-action btn-tutorial">Ver Tutorial</a>
+                <a href="#" class="btn-action btn-download btn-notify" data-name="Free Fire Max">Descargar</a>
+            </div>
+        </div>
+
+        <!-- 3. GTA V Mobile -->
+        <div class="card">
+            <div>
+                <div class="card-title">GTA V Mobile</div>
+                <div class="card-subtitle">(Android Beta)</div>
+            </div>
+            <img class="card-img" src="gtav.png" alt="GTA V">
+            <div class="btn-group">
+                <a href="#" class="btn-action btn-tutorial">Ver Tutorial</a>
+                <a href="#" class="btn-action btn-download btn-notify" data-name="GTA V Mobile">Descargar</a>
+            </div>
+        </div>
+
+        <!-- 4. Roblox Mod -->
+        <div class="card">
+            <div>
+                <div class="card-title">Roblox Mod Menu</div>
+                <div class="card-subtitle">(Fly & Wallhack)</div>
+            </div>
+            <img class="card-img" src="roblox.png" alt="Roblox">
+            <div class="btn-group">
+                <a href="#" class="btn-action btn-tutorial">Ver Tutorial</a>
+                <a href="#" class="btn-action btn-download btn-notify" data-name="Roblox Mod Menu">Descargar</a>
+            </div>
+        </div>
+
+        <!-- 5. COD Warzone -->
+        <div class="card">
+            <div>
+                <div class="card-title">COD Warzone</div>
+                <div class="card-subtitle">(Mobile Fix)</div>
+            </div>
+            <img class="card-img" src="warzone.png" alt="Warzone">
+            <div class="btn-group">
+                <a href="#" class="btn-action btn-tutorial">Ver Tutorial</a>
+                <a href="#" class="btn-action btn-download btn-notify" data-name="COD Warzone">Descargar</a>
+            </div>
+        </div>
+
+        <!-- 6. Crash Bandicoot -->
+        <div class="card">
+            <div>
+                <div class="card-title">Crash Bandicoot</div>
+                <div class="card-subtitle">(Remastered Mobile)</div>
+            </div>
+            <img class="card-img" src="crash.png" alt="Crash">
+            <div class="btn-group">
+                <a href="#" class="btn-action btn-tutorial">Ver Tutorial</a>
+                <a href="#" class="btn-action btn-download btn-notify" data-name="Crash Bandicoot">Descargar</a>
+            </div>
         </div>
     </div>
+
     <div style="display: flex; justify-content: center; margin: 60px 0 20px 0; width: 100%;">
         <a href="index.html" style="display: inline-flex; align-items: center; padding: 15px 35px; background: #000000; border: 2px solid #ff0000; border-radius: 15px; color: #ffffff; font-weight: bold; text-decoration: none; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; box-shadow: 0 0 20px rgba(255, 0, 0, 0.6); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 30px #ff0000';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 20px rgba(255, 0, 0, 0.6)';">
             Volver al inicio
         </a>
     </div>
+
     <script type="text/javascript">
         window.addEventListener('DOMContentLoaded', () => {
             const input = document.querySelector('.search-input');
@@ -79,34 +146,8 @@
                     const y = e.clientY - box.top - (box.height / 2);
                     const rotarX = -(y / box.height) * 20;
                     const rotarY = (x / box.width) * 20;
-                    this.style.transform = `rotateX(${rotarX}deg) rotateY(${rotarY}deg) scale(1.03)`;
+                    this.style.transform = "rotateX(" + rotarX + "deg) rotateY(" + rotarY + "deg) scale(1.03)";
                     this.style.boxShadow = "0 15px 35px rgba(255, 0, 0, 0.6)";
                     this.style.borderColor = "#ff4d4d";
                 });
                 card.addEventListener('mouseleave', function() {
-                    this.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-                    this.style.boxShadow = "0 0 20px rgba(255, 0, 0, 0.4)";
-                    this.style.borderColor = "#ff0000";
-                });
-            });
-            document.querySelectorAll('.btn-notify').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const appName = this.getAttribute('data-name');
-                    const container = document.getElementById('notification-container');
-                    if (container) {
-                        const toast = document.createElement('div');
-                        toast.className = 'toast-notification';
-                        toast.innerHTML = '🚀 Preparando descarga de ' + appName + '...';
-                        container.appendChild(toast);
-                        setTimeout(() => toast.classList.add('show'), 50);
-                        setTimeout(() => {
-                            toast.classList.remove('show');
-                            setTimeout(() => toast.remove(), 300);
-                        }, 3000);
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
