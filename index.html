@@ -14,20 +14,21 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
             padding: 20px;
-            display: block; /* Corregido: Evita que flexbox bloquee la pantalla */
         }
 
         /* BARRA SUPERIOR */
         .navbar {
             width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 30px auto;
             background: rgba(5, 0, 0, 0.95);
             border-bottom: 2px solid rgba(255, 0, 0, 0.3);
-            display: flex;
+            display: none;
             justify-content: center;
             gap: 25px;
             padding: 18px;
-            margin-bottom: 30px;
             box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
+            border-radius: 8px;
         }
 
         .nav-link {
@@ -57,7 +58,7 @@
             width: 100%;
         }
 
-        /* PANTALLA DE INICIO CENTRADA */
+        /* MENU DE INICIO */
         .home-menu {
             display: flex;
             flex-direction: column;
@@ -183,8 +184,8 @@
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR (Siempre armada pero oculta el bloque según la sección) -->
-    <div id="topNavbar" class="navbar" style="display: none;">
+    <!-- BARRA SUPERIOR NAV -->
+    <div id="topNavbar" class="navbar">
         <span class="nav-link" onclick="irAlInicioBase()">Inicio</span>
         <span id="nav-juegos" class="nav-link" onclick="navegarInterno('juegos', 'nav-juegos')">Juegos</span>
         <span id="nav-apps" class="nav-link" onclick="navegarInterno('apps', 'nav-apps')">Aplicaciones</span>
@@ -193,8 +194,8 @@
 
     <div class="container">
 
-        <!-- INICIO -->
-        <div id="inicio" class="main-section" style="display: block;">
+        <!-- SECCIÓN: INICIO -->
+        <div id="inicio" style="display: block;">
             <div class="home-menu">
                 <div class="home-logo">PAPOXV</div>
                 <button class="big-btn" onclick="entrarASeccion('juegos', 'nav-juegos')"><i class="fas fa-gamepad"></i> Juegos</button>
@@ -205,7 +206,7 @@
 
         <!-- SECCIÓN: JUEGOS -->
         <div id="juegos" class="main-section">
-            <div class="section-header"><h1><i class="fas fa-gamepad"></i> Juegos</h1></div>
+            <div class="section-header"><h1>Juegos del PapoVerso</h1></div>
             <div class="grid-container">
                 <div class="card">
                     <div>
@@ -223,7 +224,7 @@
 
         <!-- SECCIÓN: APLICACIONES -->
         <div id="apps" class="main-section">
-            <div class="section-header"><h1><i class="fas fa-mobile-alt"></i> Aplicaciones</h1></div>
+            <div class="section-header"><h1>Aplicaciones Pro</h1></div>
             <div class="grid-container">
                 <div class="card">
                     <div>
@@ -233,7 +234,8 @@
                     <img class="card-img" src="https://flaticon.com" alt="Icono">
                     <div class="btn-group">
                         <a href="#" class="btn-action btn-tutorial">Ver Tutorial</a>
-                        <a href="https://tpi.li/8BO3Xlf7vh4" class="btn-action btn-download">Descargar</a>
+                        <!-- 🔴 Tu enlace real con la letra 'l' minúscula verificada -->
+                        <a href="https://tpi.li" class="btn-action btn-download">Descargar</a>
                     </div>
                 </div>
             </div>
@@ -241,7 +243,7 @@
 
         <!-- SECCIÓN: WINDOWS & OFFICE -->
         <div id="pc" class="main-section">
-            <div class="section-header"><h1><i class="fas fa-desktop"></i> Windows & Office</h1></div>
+            <div class="section-header"><h1>Windows & Office</h1></div>
             <div class="grid-container">
                 <div class="card">
                     <div>
@@ -268,10 +270,13 @@
     </div>
 
     <script>
+        // Nueva lógica de control directa e inmune a flexbox
         function entrarASeccion(idSeccion, idLinkMenu) {
             document.getElementById('inicio').style.display = 'none';
             document.getElementById('topNavbar').style.display = 'flex';
             navegarInterno(idSeccion, idLinkMenu);
         }
+        
         function navegarInterno(idSeccion, idLinkMenu) {
+            // Oculta absolutamente todas las secciones de tarjetas
             document.getElementById('juegos').style.display = 'none';
