@@ -44,7 +44,7 @@
             text-shadow: 0 0 10px #ff0000; 
         }
 
-        /* Buscador */
+        /* Buscador Ajustado */
         .search-container { max-width: 500px; margin: 20px auto 30px auto; display: flex; justify-content: center; width: 100%; }
         .search-input { width: 100%; padding: 14px 20px; background: #000000; border: 2px solid #ff0000; border-radius: 30px; color: #ffffff; font-size: 1rem; outline: none; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); transition: all 0.3s ease; text-align: center; }
         .search-input::placeholder { color: #888888; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
@@ -130,12 +130,13 @@
     <div id="notification-container"></div>
 
     <div class="search-container">
+        <!-- Agregamos correctamente la clase para activar la búsqueda automática -->
         <input type="text" class="search-input" placeholder="🔍 Buscar aplicación...">
     </div>
 
     <div class="grid-container">
         <!-- TARJETA 1: LOQUENDO VOICE -->
-        <div class="card" onmousemove="ejecutarTilt(event, this)" onmouseleave="restaurarTilt(this)">
+        <div class="card">
             <div>
                 <div class="card-title">Loquendo Voice</div>
                 <div class="card-subtitle">(Portable PC)</div>
@@ -143,12 +144,12 @@
             <img class="card-img" src="https://nocookie.net" alt="Loquendo">
             <div class="btn-group">
                 <a href="#" class="btn-action btn-tutorial">Ver Tutorial</a>
-                <a href="https://cuty.io" target="_blank" class="btn-action btn-download" onclick="mostrarNotificacion('Loquendo Voice')">Descargar</a>
+                <a href="https://cuty.io" target="_blank" class="btn-action btn-download btn-notify" data-name="Loquendo Voice">Descargar</a>
             </div>
         </div>
 
         <!-- TARJETA 2: CAPCUT PRO -->
-        <div class="card" onmousemove="ejecutarTilt(event, this)" onmouseleave="restaurarTilt(this)">
+        <div class="card">
             <div>
                 <div class="card-title">CapCut Pro</div>
                 <div class="card-subtitle">(Full Desbloqueado)</div>
@@ -156,12 +157,12 @@
             <img class="card-img" src="capcut.png" alt="CapCut">
             <div class="btn-group">
                 <a href="#" class="btn-action btn-tutorial">Ver Tutorial</a>
-                <a href="#" class="btn-action btn-download" onclick="mostrarNotificacion('CapCut Pro')">Descargar</a>
+                <a href="#" class="btn-action btn-download btn-notify" data-name="CapCut Pro">Descargar</a>
             </div>
         </div>
 
         <!-- TARJETA 3: TIKTOK -->
-        <div class="card" onmousemove="ejecutarTilt(event, this)" onmouseleave="restaurarTilt(this)">
+        <div class="card">
             <div>
                 <div class="card-title">TikTok</div>
                 <div class="card-subtitle">(Full Desbloqueado)</div>
@@ -169,7 +170,7 @@
             <img class="card-img" src="tiktok.png" alt="TikTok">
             <div class="btn-group">
                 <a href="#" class="btn-action btn-tutorial">Ver Tutorial</a>
-                <a href="#" class="btn-action btn-download" onclick="mostrarNotificacion('TikTok')">Descargar</a>
+                <a href="#" class="btn-action btn-download btn-notify" data-name="TikTok">Descargar</a>
             </div>
         </div>
     </div>
@@ -181,45 +182,45 @@
     </div>
 
     <script>
-        // Sistema de Búsqueda Automático en Tiempo Real Arreglado
-        document.querySelector('.search-input').addEventListener('input', function(e) {
-            let texto = e.target.value.toLowerCase().trim();
-            document.querySelectorAll('.card').forEach(function(card) {
-                let titulo = card.querySelector('.card-title').textContent.toLowerCase();
-                if (titulo.includes(texto)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
+        // Sistema de Búsqueda Seguro e Inmediato
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                let texto = e.target.value.toLowerCase().trim();
+                document.querySelectorAll('.grid-container .card').forEach(function(card) {
+                    let titulo = card.querySelector('.card-title').textContent.toLowerCase();
+                    card.style.display = titulo.includes(texto) ? 'flex' : 'none';
+                });
+            });
+        }
+
+        // Sistema Tilt 3D Seguro (Asignado dinámicamente)
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const box = this.getBoundingClientRect();
+                const x = e.clientX - box.left - (box.width / 2);
+                const y = e.clientY - box.top - (box.height / 2);
+                const rotarX = -(y / box.height) * 20;
+                const rotarY = (x / box.width) * 20;
+                
+                this.style.transform = `rotateX(${rotarX}deg) rotateY(${rotarY}deg) scale(1.03)`;
+                this.style.boxShadow = "0 15px 35px rgba(255, 0, 0, 0.6)";
+                this.style.borderColor = "#ff4d4d";
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+                this.style.boxShadow = "0 0 20px rgba(255, 0, 0, 0.4)";
+                this.style.borderColor = "#ff0000";
             });
         });
 
-        // Efecto Tilt 3D Nativo e Interactivo
-        function ejecutarTilt(e, card) {
-            const box = card.getBoundingClientRect();
-            const x = e.clientX - box.left - (box.width / 2);
-            const y = e.clientY - box.top - (box.height / 2);
-            
-            const rotarX = -(y / box.height) * 25;
-            const rotarY = (x / box.width) * 25;
-            
-            card.style.transform = `rotateX(${rotarX}deg) rotateY(${rotarY}deg) scale(1.04)`;
-            card.style.boxShadow = "0 15px 35px rgba(255, 0, 0, 0.6)";
-            card.style.borderColor = "#ff4d4d";
-        }
-
-        function restaurarTilt(card) {
-            card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-            card.style.boxShadow = "0 0 20px rgba(255, 0, 0, 0.4)";
-            card.style.borderColor = "#ff0000";
-        }
-
-        // Sistema de Alertas Directas al Descargar
-        function mostrarNotificacion(nombreApp) {
-            const container = document.getElementById('notification-container');
-            const toast = document.createElement('div');
-            toast.className = 'toast-notification';
-            toast.innerHTML = `🚀 Preparando descarga de ${nombreApp}...`;
-            
-            container.appendChild(toast);
-            
+        // Sistema de Notificaciones sin Atributos Onclick (Antianuncios/Antibloqueos)
+        document.querySelectorAll('.btn-notify').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const appName = this.getAttribute('data-name');
+                const container = document.getElementById('notification-container');
+                
+                if (container) {
+                    const toast = document.createElement('div');
+                    toast.className = 'toast-notification';
