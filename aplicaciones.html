@@ -8,15 +8,19 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        /* AURORA LÍQUIDA (Fondo dinámico original) */
+        /* AURORA LÍQUIDA (Fondo dinámico) */
         body { 
             background: radial-gradient(circle, #2a0000 0%, #050000 100%); 
             color: #ffffff; 
             font-family: 'Segoe UI', Roboto, sans-serif; 
             min-height: 100vh; 
-            padding: 120px 0 60px 0; 
+            padding-top: 100px;
             overflow-x: hidden;
-            perspective: 1200px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
             transition: background 0.8s ease;
         }
         
@@ -47,7 +51,7 @@
         /* TÍTULO CON CYBER GLITCH */
         .section-title {
             text-align: center; font-size: 2.2rem; font-weight: 900; color: #ffffff;
-            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;
+            text-transform: uppercase; letter-spacing: 2px; margin: 20px 0 10px 0;
             text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
         }
         .section-title.glitch { animation: glitchEffect 0.2s linear infinite; }
@@ -64,15 +68,16 @@
         .tacometro-arc { position: absolute; top: -5px; bottom: -5px; left: 15px; right: 15px; border: 3px solid transparent; border-top: 3px solid rgba(255,0,0,0.1); border-radius: 35px; pointer-events: none; transition: all 0.3s ease; z-index: 1; }
         .tacometro-arc.active { border-top-color: #ff0000; box-shadow: 0 -5px 15px rgba(255,0,0,0.5); transform: scaleX(1.02) scaleY(1.06); }
 
-        /* CONTENEDOR DE LA RULETA (Arreglado para evitar cortes abajo) */
+        /* CONTENEDOR DE LA RULETA (Centrado vertical estricto bloqueado) */
         .slider-wrapper {
             width: 100%;
+            height: 500px; /* Forzamos una zona de altura suficiente */
             overflow-x: auto;
-            overflow-y: visible; /* Liberamos el corte de abajo */
-            padding: 50px 0; /* Más espacio para que respire al flotar */
+            overflow-y: visible;
             display: flex;
-            align-items: center;
+            align-items: center; /* Bloquea las tarjetas al centro de la pantalla */
             scroll-behavior: smooth;
+            perspective: 1000px; /* La perspectiva se aplica directo al deslizador */
             -webkit-overflow-scrolling: touch;
         }
         .slider-wrapper::-webkit-scrollbar { display: none; }
@@ -88,9 +93,9 @@
             transform-style: preserve-3d;
         }
         
-        /* ESTILO BASE DE LAS TARJETAS */
+        /* ESTILO BASE DE LAS TARJETAS ESTILO FREE FIRE */
         .card { 
-            background: rgba(12, 3, 3, 0.7) !important; 
+            background: rgba(12, 3, 3, 0.75) !important; 
             border: 2px solid rgba(255, 0, 0, 0.3); 
             border-radius: 20px; 
             padding: 25px; 
@@ -98,26 +103,26 @@
             flex-direction: column; 
             align-items: center; 
             text-align: center; 
-            height: 430px; /* Altura firme ajustada */
+            height: 420px; 
             width: 310px; 
             justify-content: space-between;
             cursor: pointer;
             flex-shrink: 0; 
             transform-style: preserve-3d;
             
-            /* Estado inicial ruleta */
+            /* Estado base secundario de la ruleta */
             opacity: 0.25;
-            transform: scale(0.82) translateZ(-160px);
+            transform: scale(0.82) translateZ(-150px);
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
         }
         
-        /* TARJETA SELECCIONADA EN EL CENTRO */
+        /* TARJETA ACTIVA AL CENTRO DE LA PANTALLA */
         .card.active-wheel { 
             opacity: 1 !important;
-            border-color: #ffb700; /* Neón Dorado de recompensa Free Fire */
+            border-color: #ffb700; /* Marco de token dorado */
             border-width: 3px;
             box-shadow: 0 0 35px rgba(255, 183, 0, 0.65), inset 0 0 15px rgba(255, 0, 0, 0.25);
-            transform: scale(1.06) translateZ(60px) translateY(-15px); /* Flota libremente hacia arriba */
+            transform: scale(1.06) translateZ(60px); /* Sale al frente limpia sin hundirse */
         }
         
         .card.hidden { width: 0 !important; padding: 0 !important; margin: 0 !important; border: none !important; opacity: 0 !important; pointer-events: none !important; overflow: hidden !important; }
@@ -173,11 +178,7 @@
         <input type="text" class="search-input" placeholder="🔍 Buscar aplicación...">
     </div>
 
-    <!-- RECIPIENTE DE LA RULETA COMPLETA -->
+    <!-- CARRETE DE LA RULETA -->
     <div class="slider-wrapper" id="sliderWrapper">
         <div class="grid-container" id="wheelGrid">
             
-            <!-- APLICACIÓN 1 -->
-            <div class="card" data-color="radial-gradient(circle, #250040 0%, #050000 100%)">
-                <div>
-                    <div class="card-title">Loquendo Voice</div>
