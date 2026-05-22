@@ -3,63 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Papo - Mi Espacio</title>
+    <title>EcoEspacio - Cuidemos el Medio Ambiente</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: #0b0f19;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f7f4; /* Fondo verde muy claro y limpio */
+            color: #2d4a22; /* Texto verde oscuro */
+            font-family: 'Segoe UI', Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 600px;
         }
         h1 {
-            font-size: 2.5rem;
-            color: #00f3ff;
-            text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff;
-            margin-bottom: 50px;
+            font-size: 2.8rem;
+            color: #1b4332; /* Verde bosque */
+            margin-bottom: 10px;
+        }
+        p.subtitle {
+            font-size: 1.1rem;
+            color: #40916c; /* Verde hoja */
+            font-weight: 500;
         }
         .container {
             width: 100%;
-            max-width: 500px;
-            padding: 20px;
+            max-width: 600px;
+            background: #ffffff; /* Tarjeta blanca para el contenido */
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(45, 74, 34, 0.08); /* Sombra suave */
+            border-top: 5px solid #52b788; /* Detalle verde brillante arriba */
+        }
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #1b4332;
+            border-bottom: 2px solid #e2ece9;
+            padding-bottom: 8px;
         }
         .btn {
             display: block;
             width: 100%;
-            padding: 20px;
-            margin-bottom: 25px;
-            background: transparent;
-            color: #00f3ff;
+            padding: 16px;
+            margin-bottom: 15px;
+            background: #52b788; /* Botón verde naturaleza */
+            color: white;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             text-align: center;
-            border: 2px solid #00f3ff;
-            border-radius: 12px;
-            box-shadow: inset 0 0 8px rgba(0, 243, 255, 0.2), 0 0 8px rgba(0, 243, 255, 0.2);
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            transition: background 0.2s ease, transform 0.1s ease;
         }
         .btn:hover {
-            background: #00f3ff;
-            color: #0b0f19;
-            box-shadow: 0 0 20px #00f3ff, 0 0 40px #00f3ff;
-            cursor: pointer;
+            background: #40916c; /* Verde más oscuro al pasar el mouse */
+            transform: translateY(-2px);
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #74c69d;
         }
     </style>
 </head>
 <body>
 
-    <h1>🎮 El Espacio de Papo</h1>
+    <div class="header">
+        <h1>🌱 Mi EcoEspacio</h1>
+        <p class="subtitle">Compartiendo herramientas y archivos para proteger nuestro planeta</p>
+    </div>
 
     <div class="container">
-        <!-- Reemplaza los '#' por los enlaces de descarga reales en el futuro -->
-        <a href="#" class="btn">🚀 Mis Juegos</a>
-        <a href="#" class="btn">📱 Mis Aplicaciones</a>
+        <h2 class="section-title">Descargas Disponibles</h2>
+        
+        <!-- Aquí irán tus enlaces en el futuro cambiando el '#' por tu link -->
+        <a href="#" class="btn">📚 Guías de Reciclaje (PDF)</a>
+        <a href="#" class="btn">📱 Aplicaciones Ecológicas</a>
+        <a href="#" class="btn">📊 Presentaciones y Datos</a>
     </div>
+
+    <div class="footer">
+        <p>Hecho con amor por la naturaleza 🌎</p>
+    </div>
+
+</body>
+</html>
 
 </body>
 </html>
