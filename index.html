@@ -17,11 +17,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* Centra el inicio verticalmente */
-            padding: 20px 20px 100px 20px; /* Espacio abajo para el footer fijo */
+            justify-content: center;
+            padding: 20px 20px 100px 20px;
         }
 
-        /* BARRA DE NAVEGACIÓN SUPERIOR FIJA */
         .navbar {
             position: fixed;
             top: 0;
@@ -59,14 +58,12 @@
             padding: 0 10px;
         }
 
-        /* SECCIONES INTERNAS */
         .main-section {
             display: none;
             width: 100%;
-            padding-top: 80px; /* Margen para no tapar con la barra de arriba */
+            padding-top: 80px;
         }
 
-        /* PANTALLA PRINCIPAL */
         .home-menu {
             display: flex;
             flex-direction: column;
@@ -87,7 +84,6 @@
             letter-spacing: 3px;
         }
 
-        /* BOTONES GIGANTES */
         .big-btn {
             width: 100%;
             background: rgba(15, 5, 5, 0.7);
@@ -108,17 +104,11 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .big-btn i {
-            color: #ff4d4d;
-            font-size: 1.8rem;
-        }
-
         .big-btn:hover {
             transform: scale(1.02);
             box-shadow: 0 0 25px #ff0000;
         }
 
-        /* SECCIONES INTERNAS INTERIORES */
         .section-header {
             text-align: center;
             margin-bottom: 40px;
@@ -198,7 +188,6 @@
         .btn-tutorial { background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%); }
         .btn-download { background: linear-gradient(90deg, #9d4edd 0%, #7b2cbf 100%); }
 
-        /* 📸 INSTAGRAM FIJO ABAJO A LA DERECHA */
         .instagram-float {
             position: fixed;
             bottom: 20px;
@@ -214,15 +203,9 @@
             font-weight: bold;
             font-size: 0.95rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            z-index: 2000; /* Asegura que se vea por encima de todo */
-            transition: transform 0.3s;
+            z-index: 2000;
         }
 
-        .instagram-float:hover {
-            transform: scale(1.05);
-        }
-
-        /* 📝 PIE DE PÁGINA COMPLETAMENTE FIJO ABAJO */
         .footer {
             position: fixed;
             bottom: 0;
@@ -240,7 +223,6 @@
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR FIJA -->
     <div id="topNavbar" class="navbar">
         <span class="nav-link" onclick="irAlInicioBase()">Inicio</span>
         <span id="nav-juegos" class="nav-link" onclick="navegarInterno('juegos', 'nav-juegos')">Juegos</span>
@@ -254,26 +236,15 @@
         <div id="inicio" style="display: block; width: 100%;">
             <div class="home-menu">
                 <div class="home-logo">PAPOXV</div>
-                
-                <button class="big-btn" onclick="entrarASeccion('juegos', 'nav-juegos')">
-                    <i class="fas fa-gamepad"></i> Juegos
-                </button>
-                
-                <button class="big-btn" onclick="entrarASeccion('apps', 'nav-apps')">
-                    <i class="fas fa-mobile-alt"></i> Aplicaciones
-                </button>
-
-                <button class="big-btn" onclick="entrarASeccion('pc', 'nav-pc')">
-                    <i class="fas fa-desktop"></i> Windows & Office
-                </button>
+                <button class="big-btn" onclick="entrarASeccion('juegos', 'nav-juegos')"><i class="fas fa-gamepad"></i> Juegos</button>
+                <button class="big-btn" onclick="entrarASeccion('apps', 'nav-apps')"><i class="fas fa-mobile-alt"></i> Aplicaciones</button>
+                <button class="big-btn" onclick="entrarASeccion('pc', 'nav-pc')"><i class="fas fa-desktop"></i> Windows & Office</button>
             </div>
         </div>
 
         <!-- SECCIÓN: JUEGOS -->
         <div id="juegos" class="main-section">
-            <div class="section-header">
-                <h1><i class="fas fa-gamepad"></i> Juegos del PapoVerso</h1>
-            </div>
+            <div class="section-header"><h1><i class="fas fa-gamepad"></i> Juegos del PapoVerso</h1></div>
             <div class="grid-container">
                 <div class="card">
                     <div>
@@ -289,16 +260,33 @@
             </div>
         </div>
 
-        <!-- SECCIÓN: APLICACIONES -->
+        <!-- SECCIÓN: APLICACIONES (AQUÍ ESTÁ TU LOQUENDO INTEGRADO) -->
         <div id="apps" class="main-section">
-            <div class="section-header">
-                <h1><i class="fas fa-mobile-alt"></i> Aplicaciones Pro</h1>
-            </div>
+            <div class="section-header"><h1><i class="fas fa-mobile-alt"></i> Aplicaciones Pro</h1></div>
             <div class="grid-container">
                 <div class="card">
                     <div>
-                        <div class="card-title">CapCut Pro</div>
-                        <div class="card-subtitle">(Full Desbloqueado)</div>
+                        <div class="card-title">Loquendo Voice</div>
+                        <div class="card-subtitle">(Portable PC)</div>
                     </div>
                     <img class="card-img" src="https://flaticon.com" alt="Icono">
                     <div class="btn-group">
+                        <a href="#" class="btn-action btn-tutorial"><i class="fas fa-eye"></i> Ver Tutorial</a>
+                        
+                        <!-- 🔴 PEGA TU LINK EN MEDIO DE LAS COMILLAS DE ABAJO DONDE DICE href="#" -->
+                        <a href="#" class="btn-action btn-download"><i class="fas fa-download"></i> Descargar App</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: WINDOWS & OFFICE -->
+        <div id="pc" class="main-section">
+            <div class="section-header"><h1><i class="fas fa-desktop"></i> Windows & Office</h1></div>
+            <div class="grid-container">
+                <div class="card">
+                    <div>
+                        <div class="card-title">Windows 10 Pro</div>
+                        <div class="card-subtitle">(ISO Pre-activada)</div>
+                    </div>
