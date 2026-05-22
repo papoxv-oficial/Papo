@@ -44,7 +44,6 @@
             text-shadow: 0 0 10px #ff0000; 
         }
 
-        /* Buscador Ajustado */
         .search-container { max-width: 500px; margin: 20px auto 30px auto; display: flex; justify-content: center; width: 100%; }
         .search-input { width: 100%; padding: 14px 20px; background: #000000; border: 2px solid #ff0000; border-radius: 30px; color: #ffffff; font-size: 1rem; outline: none; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); transition: all 0.3s ease; text-align: center; }
         .search-input::placeholder { color: #888888; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
@@ -52,7 +51,6 @@
         
         .grid-container { display: flex; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; justify-content: center; }
         
-        /* TARJETAS CON EFECTO INTERACTIVO MEJORADO */
         .card { 
             background: #000000; 
             border: 2px solid #ff0000; 
@@ -82,7 +80,6 @@
         .btn-download { background: #a200ff; box-shadow: 0 4px 10px rgba(162, 0, 255, 0.3); }
         .btn-action:hover { filter: brightness(1.2); }
 
-        /* CONTENEDOR DE NOTIFICACIONES */
         #notification-container {
             position: fixed;
             bottom: 30px;
@@ -94,7 +91,6 @@
             pointer-events: none;
         }
 
-        /* ALERTA PREMIUM ESTILO PAPOXV */
         .toast-notification {
             background: #000000;
             border: 2px solid #ff0000;
@@ -126,16 +122,13 @@
         <a href="pc.html" class="nav-link">Windows & Office</a>
     </div>
 
-    <!-- Contenedor de notificaciones -->
     <div id="notification-container"></div>
 
     <div class="search-container">
-        <!-- Agregamos correctamente la clase para activar la búsqueda automática -->
         <input type="text" class="search-input" placeholder="🔍 Buscar aplicación...">
     </div>
 
     <div class="grid-container">
-        <!-- TARJETA 1: LOQUENDO VOICE -->
         <div class="card">
             <div>
                 <div class="card-title">Loquendo Voice</div>
@@ -148,7 +141,6 @@
             </div>
         </div>
 
-        <!-- TARJETA 2: CAPCUT PRO -->
         <div class="card">
             <div>
                 <div class="card-title">CapCut Pro</div>
@@ -161,7 +153,6 @@
             </div>
         </div>
 
-        <!-- TARJETA 3: TIKTOK -->
         <div class="card">
             <div>
                 <div class="card-title">TikTok</div>
@@ -182,7 +173,6 @@
     </div>
 
     <script>
-        // Sistema de Búsqueda Seguro e Inmediato
         const searchInput = document.querySelector('.search-input');
         if (searchInput) {
             searchInput.addEventListener('input', function(e) {
@@ -194,7 +184,6 @@
             });
         }
 
-        // Sistema Tilt 3D Seguro (Asignado dinámicamente)
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('mousemove', function(e) {
                 const box = this.getBoundingClientRect();
@@ -215,7 +204,6 @@
             });
         });
 
-        // Sistema de Notificaciones sin Atributos Onclick (Antianuncios/Antibloqueos)
         document.querySelectorAll('.btn-notify').forEach(btn => {
             btn.addEventListener('click', function() {
                 const appName = this.getAttribute('data-name');
@@ -224,3 +212,19 @@
                 if (container) {
                     const toast = document.createElement('div');
                     toast.className = 'toast-notification';
+                    toast.innerHTML = `🚀 Preparando descarga de ${appName}...`;
+                    
+                    container.appendChild(toast);
+                    
+                    setTimeout(() => toast.classList.add('show'), 50);
+                    
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                        setTimeout(() => toast.remove(), 300);
+                    }, 3000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
