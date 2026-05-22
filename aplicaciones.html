@@ -14,7 +14,7 @@
             color: #ffffff; 
             font-family: 'Segoe UI', Roboto, sans-serif; 
             min-height: 100vh; 
-            padding: 140px 20px 40px 20px; 
+            padding: 120px 20px 40px 20px; 
             overflow-x: hidden;
             perspective: 1000px;
         }
@@ -213,9 +213,9 @@
         <span>🎮</span> Aplicaciones
     </div>
 
-    <!-- BUSCADOR -->
+    <!-- BUSCADOR CON ENLACE DIRECTO (ONINPUT) -->
     <div class="search-container">
-        <input type="text" class="search-input" id="buscador" placeholder="🔍 Buscar aplicación...">
+        <input type="text" class="search-input" id="buscador" oninput="buscarApp()" placeholder="🔍 Buscar aplicación...">
     </div>
 
     <!-- REJILLA DE TARJETAS EN FILA -->
@@ -290,8 +290,7 @@
         </a>
     </div>
 
-    <!-- SCRIPTS COMPLETOS -->
+    <!-- SCRIPT CORREGIDO SIN ERRORES -->
     <script type="text/javascript">
-        window.addEventListener('DOMContentLoaded', () => {
-            
-            // LÓGICA DEL BUSCADOR
+        
+        // CORRECCIÓN DEL BUSCADOR PARA LA NUEVA ESTRUCTURA
