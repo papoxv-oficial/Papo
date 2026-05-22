@@ -14,7 +14,7 @@
             min-height: 100vh; 
             padding: 120px 20px 40px 20px; 
             overflow-x: hidden;
-            perspective: 1000px; /* Activa el entorno 3D general */
+            perspective: 1000px;
         }
         
         .navbar { 
@@ -44,7 +44,6 @@
             text-shadow: 0 0 10px #ff0000; 
         }
 
-        /* Buscador translúcido */
         .search-container { max-width: 500px; margin: 20px auto 30px auto; display: flex; justify-content: center; width: 100%; }
         .search-input { width: 100%; padding: 14px 20px; background: rgba(0, 0, 0, 0.6); border: 2px solid #ff0000; border-radius: 30px; color: #ffffff; font-size: 1rem; outline: none; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); transition: all 0.3s ease; text-align: center; }
         .search-input::placeholder { color: #888888; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
@@ -52,9 +51,9 @@
         
         .grid-container { display: flex; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; justify-content: center; }
         
-        /* TARJETAS TRANSLÚCIDAS CON ENTORNO INTERNO 3D */
+        /* TARJETAS TRANSLÚCIDAS 3D UNIFICADAS */
         .card { 
-            background: rgba(15, 5, 5, 0.5); /* Deja pasar tu degradado rojo original */
+            background: rgba(15, 5, 5, 0.5); 
             border: 2px solid #ff0000; 
             border-radius: 20px; 
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); 
@@ -69,24 +68,22 @@
             justify-content: space-between;
             transition: transform 0.1s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
             cursor: pointer;
-            transform-style: preserve-3d; /* Permite que los elementos de adentro floten hacia afuera */
+            transform-style: preserve-3d;
         }
         
         .card-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 2px; transform: translateZ(20px); }
         .card-subtitle { font-size: 0.8rem; color: #ff0000; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; transform: translateZ(15px); }
-        .card-img { width: 100%; max-width: 140px; height: 80px; object-fit: contain; margin: 15px 0; transform: translateZ(30px); }
+        .card-img { width: 100%; max-width: 140px; height: 80px; object-fit: contain; margin: 15px 0; transform: translateZ(25px); transition: transform 0.2s ease; }
         
-        /* Contenedor de botones flotantes */
         .btn-group { 
             width: 100%; 
             display: flex; 
             flex-direction: column; 
             gap: 12px; 
             transform-style: preserve-3d;
-            transform: translateZ(25px); 
+            transform: translateZ(15px);
         }
         
-        /* BOTONES INTERACTIVOS 3D */
         .btn-action { 
             display: block; 
             width: 100%; 
@@ -100,26 +97,23 @@
             text-align: center; 
             letter-spacing: 1px; 
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, filter 0.3s ease;
-            transform: translateZ(0px); /* Base inicial */
         }
         
-        /* Colores base planos */
         .btn-tutorial { background: #00a2ff; box-shadow: 0 4px 10px rgba(0, 162, 255, 0.3); }
         .btn-download { background: #a200ff; box-shadow: 0 4px 10px rgba(162, 0, 255, 0.3); }
         
-        /* EFECTO 3D POP-UP: Se levanta físicamente hacia el usuario */
+        /* ELEVACIÓN INDEPENDIENTE EN EL HOVER DEL BOTÓN */
         .btn-tutorial:hover { 
-            transform: translateZ(20px) scale(1.03); 
+            transform: translateZ(25px) scale(1.04); 
             box-shadow: 0 10px 20px rgba(0, 162, 255, 0.6);
             filter: brightness(1.1);
         }
         .btn-download:hover { 
-            transform: translateZ(20px) scale(1.03); 
+            transform: translateZ(25px) scale(1.04); 
             box-shadow: 0 10px 20px rgba(162, 0, 255, 0.6);
             filter: brightness(1.1);
         }
 
-        /* Contenedor de Alertas */
         #notification-container {
             position: fixed;
             bottom: 30px;
@@ -221,12 +215,20 @@
             });
         }
 
+        // CONTROL MEJORADO PARA MANTENER LA ROTACIÓN 3D DE LA TARJETA
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('mousemove', function(e) {
                 const box = this.getBoundingClientRect();
                 const x = e.clientX - box.left - (box.width / 2);
                 const y = e.clientY - box.top - (box.height / 2);
+                
                 const rotarX = -(y / box.height) * 20;
                 const rotarY = (x / box.width) * 20;
                 
+                // Mantiene activa la inclinación de la tarjeta sin interferir con los botones
                 this.style.transform = `rotateX(${rotarX}deg) rotateY(${rotarY}deg) scale(1.03)`;
+                this.style.boxShadow = "0 15px 35px rgba(255, 0, 0, 0.6)";
+                this.style.borderColor = "#ff4d4d";
+                this.style.background = "rgba(42, 0, 0, 0.3)";
+            });
+
