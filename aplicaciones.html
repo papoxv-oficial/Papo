@@ -10,7 +10,14 @@
         .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(5, 0, 0, 0.95); border-bottom: 2px solid rgba(255, 0, 0, 0.3); display: flex; justify-content: center; gap: 25px; padding: 18px; z-index: 1000; }
         .nav-link { color: #b3b3b3; text-decoration: none; font-size: 1rem; font-weight: bold; text-transform: uppercase; }
         .nav-link.active { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-        .grid-container { display: flex; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 40px auto 0 auto; justify-content: center; }
+
+        /* Buscador */
+        .search-container { max-width: 500px; margin: 20px auto 30px auto; display: flex; justify-content: center; width: 100%; }
+        .search-input { width: 100%; padding: 14px 20px; background: #000000; border: 2px solid #ff0000; border-radius: 30px; color: #ffffff; font-size: 1rem; outline: none; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); transition: all 0.3s ease; text-align: center; }
+        .search-input::placeholder { color: #888888; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+        .search-input:focus { box-shadow: 0 0 25px #ff0000; background: rgba(15, 5, 5, 0.8); }
+        
+        .grid-container { display: flex; flex-wrap: wrap; gap: 30px; max-width: 1200px; margin: 0 auto; justify-content: center; }
         .card { background: #000000; border: 2px solid #ff0000; border-radius: 20px; box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); padding: 30px 25px; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 420px; width: 100%; max-width: 340px; justify-content: space-between; }
         .card-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 2px; }
         .card-subtitle { font-size: 0.8rem; color: #ff0000; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; }
@@ -29,6 +36,11 @@
         <a href="juegos.html" class="nav-link">Juegos</a>
         <a href="aplicaciones.html" class="nav-link active">Aplicaciones</a>
         <a href="pc.html" class="nav-link">Windows & Office</a>
+    </div>
+
+    <!-- BUSCADOR -->
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="🔍 Buscar aplicación...">
     </div>
 
     <div class="grid-container">
@@ -69,7 +81,6 @@
         </div>
     </div>
 
-    <!-- BOTÓN VOLVER AL INICIO INTEGRADO -->
     <div style="display: flex; justify-content: center; margin: 60px 0 20px 0; width: 100%;">
         <a href="index.html" style="display: inline-flex; align-items: center; padding: 15px 35px; background: #000000; border: 2px solid #ff0000; border-radius: 15px; color: #ffffff; font-weight: bold; text-decoration: none; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; box-shadow: 0 0 20px rgba(255, 0, 0, 0.6); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 30px #ff0000';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 20px rgba(255, 0, 0, 0.6)';">
             Volver al inicio
@@ -78,5 +89,6 @@
 
 </body>
 </html>
+
 
 
