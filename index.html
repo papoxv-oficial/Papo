@@ -3,97 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoEspacio - Cuidemos el Medio Ambiente</title>
+    <title>papoxv | Descargas Premium</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            background-color: #f0f7f4; /* Fondo verde muy claro y limpio */
-            color: #2d4a22; /* Texto verde oscuro */
-            font-family: 'Segoe UI', Arial, sans-serif;
+            /* Fondo negro con un difuminado (gradiente) rojo en el centro */
+            background: radial-gradient(circle, #3a0000 0%, #0b0000 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 30px 15px;
         }
+
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            max-width: 600px;
+            margin-bottom: 35px;
         }
-        h1 {
-            font-size: 2.8rem;
-            color: #1b4332; /* Verde bosque */
-            margin-bottom: 10px;
+
+        /* Logo llamativo con brillo rojo */
+        .logo {
+            font-size: 3.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000, 0 0 30px #ff0000;
+            margin-bottom: 5px;
         }
-        p.subtitle {
-            font-size: 1.1rem;
-            color: #40916c; /* Verde hoja */
-            font-weight: 500;
+
+        .tagline {
+            font-size: 0.95rem;
+            color: #b3b3b3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
+        /* Contenedor intuitivo tipo lista de aplicaciones */
         .container {
             width: 100%;
-            max-width: 600px;
-            background: #ffffff; /* Tarjeta blanca para el contenido */
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(45, 74, 34, 0.08); /* Sombra suave */
-            border-top: 5px solid #52b788; /* Detalle verde brillante arriba */
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
         }
-        .section-title {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: #1b4332;
-            border-bottom: 2px solid #e2ece9;
-            padding-bottom: 8px;
-        }
-        .btn {
-            display: block;
-            width: 100%;
+
+        /* Tarjeta de descarga individual */
+        .card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 14px;
             padding: 16px;
-            margin-bottom: 15px;
-            background: #52b788; /* Botón verde naturaleza */
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 10px;
-            transition: background 0.2s ease, transform 0.1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        .btn:hover {
-            background: #40916c; /* Verde más oscuro al pasar el mouse */
+
+        .card:hover {
+            border-color: #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
             transform: translateY(-2px);
         }
-        .footer {
-            margin-top: 40px;
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .category {
+            font-size: 0.8rem;
+            color: #ff4d4d;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Botón de descarga intuitivo dentro de la tarjeta */
+        .download-btn {
+            background: #ff0000;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 18px;
             font-size: 0.9rem;
-            color: #74c69d;
+            font-weight: bold;
+            border-radius: 8px;
+            text-transform: uppercase;
+            transition: background 0.2s;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+        }
+
+        .download-btn:hover {
+            background: #cc0000;
+            box-shadow: 0 0 15px #ff0000;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding-top: 40px;
+            font-size: 0.8rem;
+            color: #555555;
         }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1>🌱 Mi EcoEspacio</h1>
-        <p class="subtitle">Compartiendo herramientas y archivos para proteger nuestro planeta</p>
+        <div class="logo">papoxv</div>
+        <p class="tagline">Juegos Mods & Apps Premium Sin Lag</p>
     </div>
 
     <div class="container">
-        <h2 class="section-title">Descargas Disponibles</h2>
         
-        <!-- Aquí irán tus enlaces en el futuro cambiando el '#' por tu link -->
-        <a href="#" class="btn">📚 Guías de Reciclaje (PDF)</a>
-        <a href="#" class="btn">📱 Aplicaciones Ecológicas</a>
-        <a href="#" class="btn">📊 Presentaciones y Datos</a>
+        <!-- TARJETA 1: Puedes cambiar el '#' por tu link de ShrinkEarn cuando lo tengas -->
+        <div class="card">
+            <div class="info">
+                <span class="category">🎮 Minecraft Mod</span>
+                <span class="title">Shaders Ultra HD v1.0</span>
+            </div>
+            <a href="#" class="download-btn">Obtener</a>
+        </div>
+
+        <!-- TARJETA 2 -->
+        <div class="card">
+            <div class="info">
+                <span class="category">📱 Aplicación</span>
+                <span class="title">CapCut Pro Desbloqueado</span>
+            </div>
+            <a href="#" class="download-btn">Obtener</a>
+        </div>
+
+        <!-- TARJETA 3 -->
+        <div class="card">
+            <div class="info">
+                <span class="category">🚀 Optimización</span>
+                <span class="title">Quitar Lag Free Fire (Celular)</span>
+            </div>
+            <a href="#" class="download-btn">Obtener</a>
+        </div>
+
     </div>
 
     <div class="footer">
-        <p>Hecho con amor por la naturaleza 🌎</p>
+        <p>&copy; 2026 papoxv. Todos los derechos reservados.</p>
     </div>
-
-</body>
-</html>
 
 </body>
 </html>
