@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>papoxv | Aplicaciones</title>
-    <!-- ENLACE AZUL: Librería de iconos Font Awesome indispensable -->
+    <!-- Librería indispensable para cargar los iconos azules de los botones -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,8 +15,8 @@
             font-family: 'Segoe UI', Roboto, sans-serif; 
             min-height: 100vh; 
             padding: 120px 20px 40px 20px; 
-            overflow-x: hidden;
-            perspective: 1000px;
+            overflow-x: hidden; 
+            perspective: 1000px; 
         }
         
         .navbar { 
@@ -45,7 +45,7 @@
             color: #ff0000; 
             text-shadow: 0 0 10px #ff0000; 
         }
-
+        
         .search-container { 
             max-width: 500px; 
             margin: 20px auto 30px auto; 
@@ -80,15 +80,17 @@
             background: rgba(15, 5, 5, 0.8); 
         }
         
+        /* DISEÑO DE CUADRÍCULA ORGANIZADA EN ORDEN */
         .grid-container { 
-            display: flex; 
-            flex-wrap: wrap; 
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px; 
             max-width: 1200px; 
             margin: 0 auto; 
-            justify-content: center; 
+            justify-items: center;
         }
         
+        /* CONFIGURACIÓN DE TARJETA OSCURA CON CAPA 3D */
         .card { 
             background: rgba(15, 5, 5, 0.7); 
             border: 2px solid #ff0000; 
@@ -103,21 +105,24 @@
             width: 100%; 
             max-width: 340px; 
             justify-content: space-between; 
-            transition: transform 0.1s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            transform-style: preserve-3d;
+            transition: transform 0.1s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
+            cursor: pointer; 
+            transform-style: preserve-3d; 
         }
         
         .card-title { 
             font-size: 1.4rem; 
             font-weight: bold; 
-            transform: translateZ(20px);
+            margin-bottom: 2px;
+            transform: translateZ(25px); 
         }
         
         .card-subtitle { 
             font-size: 0.85rem; 
             color: #ff4d4d; 
             text-transform: uppercase; 
-            transform: translateZ(15px);
+            margin-bottom: 15px;
+            transform: translateZ(20px); 
         }
         
         .card-img { 
@@ -126,15 +131,17 @@
             height: 90px; 
             object-fit: contain; 
             margin: 15px 0;
-            transform: translateZ(25px);
+            transform: translateZ(30px); 
         }
         
+        /* BOTONES CON PROFUNDIDAD HOLOGRÁFICA */
         .btn-group { 
             width: 100%; 
             display: flex; 
             flex-direction: column; 
             gap: 12px; 
-            transform: translateZ(15px);
+            transform-style: preserve-3d; 
+            transform: translateZ(20px); 
         }
         
         .btn-action { 
@@ -148,19 +155,37 @@
             border-radius: 30px; 
             text-transform: uppercase; 
             text-align: center; 
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
         }
         
-        .btn-tutorial { background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%); }
-        .btn-download { background: linear-gradient(90deg, #9d4edd 0%, #7b2cbf 100%); }
+        .btn-tutorial { 
+            background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%); 
+            box-shadow: 0 4px 10px rgba(0, 162, 255, 0.3);
+        }
         
-        /* Iconos de los botones */
+        .btn-download { 
+            background: linear-gradient(90deg, #9d4edd 0%, #7b2cbf 100%); 
+            box-shadow: 0 4px 10px rgba(162, 0, 255, 0.3);
+        }
+        
+        .btn-tutorial:hover { 
+            transform: translateZ(35px) scale(1.04); 
+            box-shadow: 0 10px 20px rgba(0, 162, 255, 0.6); 
+        }
+        
+        .btn-download:hover { 
+            transform: translateZ(35px) scale(1.04); 
+            box-shadow: 0 10px 20px rgba(162, 0, 255, 0.6); 
+        }
+        
         .btn-action i {
-            margin-right: 8px;
+            margin-right: 6px;
         }
     </style>
 </head>
 <body>
 
+    <!-- NAV BAR SUPERIOR FIJA -->
     <div class="navbar">
         <a href="index.html" class="nav-link">Inicio</a>
         <a href="juegos.html" class="nav-link">Juegos</a>
@@ -168,12 +193,14 @@
         <a href="pc.html" class="nav-link">Windows & Office</a>
     </div>
 
+    <!-- CUADRO DE BÚSQUEDA CENTRAL -->
     <div class="search-container">
         <input type="text" class="search-input" placeholder="🔍 Buscar aplicación...">
     </div>
 
+    <!-- CONTENEDOR EN REJILLA ORDENADA -->
     <div class="grid-container">
-        
+
         <!-- 1. CapCut -->
         <div class="card">
             <div>
@@ -228,49 +255,21 @@
 
     </div>
 
+    <!-- BOTÓN INFERIOR DE RETORNO -->
+    <div style="display: flex; justify-content: center; margin: 60px 0 20px 0; width: 100%;">
+        <a href="index.html" style="display: inline-flex; align-items: center; padding: 15px 35px; background: #000000; border: 2px solid #ff0000; border-radius: 15px; color: #ffffff; font-weight: bold; text-decoration: none; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; box-shadow: 0 0 20px rgba(255, 0, 0, 0.6); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 30px #ff0000';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 20px rgba(255, 0, 0, 0.6)';">
+            Volver al inicio
+        </a>
+    </div>
+
+    <!-- MOTOR LÓGICO DE INTERACCIÓN INTEGRADO -->
     <script type="text/javascript">
         window.addEventListener('DOMContentLoaded', () => {
             
-            // BUSCADOR EN TIEM REAL
-            const searchInput = document.querySelector('.search-input');
-            if (searchInput) {
-                searchInput.addEventListener('input', function(e) {
+            // BUSCADOR EN TIEMPO REAL
+            const input = document.querySelector('.search-input');
+            if (input) {
+                input.addEventListener('input', function(e) {
                     const texto = e.target.value.toLowerCase().trim();
                     document.querySelectorAll('.grid-container .card').forEach(card => {
                         const titulo = card.querySelector('.card-title').textContent.toLowerCase();
-                        card.style.display = titulo.includes(texto) ? 'flex' : 'none';
-                    });
-                });
-            }
-
-            // EFECTO INCLINACIÓN 3D REAL (CORREGIDO SIN TEXTO ROJO)
-            document.querySelectorAll('.card').forEach(card => {
-                card.addEventListener('mousemove', function(e) {
-                    const box = this.getBoundingClientRect();
-                    const x = e.clientX - box.left - (box.width / 2);
-                    const y = e.clientY - box.top - (box.height / 2);
-                    const rotarX = -(y / box.height) * 20;
-                    const rotarY = (x / box.width) * 20;
-                    
-                    this.style.transform = "rotateX(" + rotarX + "deg) rotateY(" + rotarY + "deg) scale(1.03)";
-                    this.style.boxShadow = "0 15px 35px rgba(255, 0, 0, 0.6)";
-                    this.style.borderColor = "#ff4d4d";
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-                    this.style.boxShadow = "0 0 15px rgba(255, 0, 0, 0.3)";
-                    this.style.borderColor = "#ff0000";
-                });
-            });
-
-            // ANTI-IMÁGENES ROTAS
-            document.querySelectorAll(".card-img").forEach(img => {
-                img.addEventListener("error", function() {
-                    this.src = "https://placeholder.com";
-                });
-            });
-        });
-    </script>
-</body>
-</html>
