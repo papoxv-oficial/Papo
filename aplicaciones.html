@@ -7,18 +7,15 @@
     <title>papoxv | Aplicaciones</title>
     
     <style>
-        /* ==========================================
-           RESET BASE DE ESTILOS GAMER
-           ========================================== */
+        /* ==========================================================================
+           1. RESET DE ESTILOS BASE Y CONFIGURACIÓN DEL FONDO (AURORA LÍQUIDA)
+           ========================================================================== */
         * { 
             box-sizing: border-box; 
             margin: 0; 
             padding: 0; 
         }
 
-        /* ==========================================
-           AURORA LÍQUIDA (Fondo dinámico interactivo)
-           ========================================== */
         body {
             background: radial-gradient(circle at center, #2a0000 0%, #050000 100%);
             color: #ffffff;
@@ -31,34 +28,45 @@
             background-attachment: fixed;
         }
 
-        /* Nav superior de PAPOXV */
+        /* Menú de Navegación Superior */
         nav {
             position: fixed;
-            top: 0; left: 0; width: 100%;
-            height: 60px; background: rgba(0,0,0,0.9);
-            display: flex; justify-content: center; align-items: center;
-            gap: 25px; z-index: 999;
+            top: 0; 
+            left: 0; 
+            width: 100%;
+            height: 60px; 
+            background: rgba(0,0,0,0.9);
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            gap: 25px; 
+            z-index: 999;
             border-bottom: 1px solid #111;
         }
+
         nav a { 
             color: #aaa; 
             text-decoration: none; 
             font-weight: bold; 
             font-size: 14px; 
             text-transform: uppercase; 
-            letter-spacing: 1px; 
+            letter-spacing: 1px;
         }
+
         nav a.active { 
             color: #ff0000; 
             text-shadow: 0 0 10px #ff0000; 
         }
 
-        /* ==========================================
-           BARRA DE PROGRESO DE LECTURA (SCROLL)
-           ========================================== */
+        /* ==========================================================================
+           2. INTERFAZ: BARRA DE PROGRESO, BUSCADOR Y GLITCH
+           ========================================================================== */
         #scroll-progress {
             position: fixed;
-            top: 0; left: 0; width: 0%; height: 3px;
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 3px;
             background: linear-gradient(90deg, #ff0000, #ff5555);
             box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
             z-index: 9999;
@@ -71,13 +79,56 @@
             text-align: center;
         }
 
-        /* Barra de búsqueda */
+        .glitch-title {
+            position: relative;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .glitch-active::before,
+        .glitch-active::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #050000;
+        }
+        
+        .glitch-active::before {
+            left: 2px; 
+            text-shadow: -2px 0 #00ffff;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 0.2s infinite linear alternate-reverse;
+        }
+        
+        .glitch-active::after {
+            left: -2px; 
+            text-shadow: -2px 0 #ff0000, 0 2px #00ffff;
+            clip: rect(85px, 450px, 140px, 0);
+            animation: glitch-anim2 0.2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            100% { clip: rect(112px, 9999px, 76px, 0); }
+        }
+        
+        @keyframes glitch-anim2 {
+            0% { clip: rect(15px, 9999px, 115px, 0); }
+            100% { clip: rect(43px, 9999px, 109px, 0); }
+        }
+
         .search-box {
             position: relative;
             max-width: 500px;
             margin: 30px auto 40px;
             padding: 0 20px;
         }
+
         .search-box input {
             width: 100%;
             padding: 15px 20px;
@@ -90,53 +141,15 @@
             text-align: center;
             transition: all 0.3s ease;
         }
+
         .search-box input:focus {
             border-color: #ff0000;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
         }
 
-        /* ==========================================
-           TÍTULO CON CYBER GLITCH ALEATORIO
-           ========================================== */
-        .glitch-title {
-            position: relative;
-            font-size: 3rem;
-            letter-spacing: 2px;
-            color: #fff;
-            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        .glitch-active::before,
-        .glitch-active::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #050000;
-        }
-        .glitch-active::before {
-            left: 2px; text-shadow: -2px 0 #00ffff;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 0.2s infinite linear alternate-reverse;
-        }
-        .glitch-active::after {
-            left: -2px; text-shadow: -2px 0 #ff0000, 0 2px #00ffff;
-            clip: rect(85px, 450px, 140px, 0);
-            animation: glitch-anim2 0.2s infinite linear alternate-reverse;
-        }
-        @keyframes glitch-anim {
-            0% { clip: rect(31px, 9999px, 94px, 0); }
-            100% { clip: rect(112px, 9999px, 76px, 0); }
-        }
-        @keyframes glitch-anim2 {
-            0% { clip: rect(15px, 9999px, 115px, 0); }
-            100% { clip: rect(43px, 9999px, 109px, 0); }
-        }
-
-        /* ==========================================
-           CARRUSEL HORIZONTAL INTERACTIVO (STEAM DECK STYLE)
-           ========================================== */
+        /* ==========================================================================
+           3. ESTILOS DEL CARRUSEL EN LA PANTALLA (ESTILO STEAM DECK)
+           ========================================================================== */
         .carrusel-wrapper {
             position: relative;
             width: 100%;
@@ -148,15 +161,17 @@
             display: flex;
             gap: 40px;
             overflow-x: auto;
-            padding: 20px 50vw; /* El padding permite centrar perfectamente la primera y última app */
+            padding: 20px 50vw; 
             scroll-behavior: smooth;
             scrollbar-width: none;
             cursor: grab;
             scroll-snap-type: x mandatory;
         }
+
         .carrusel-contenedor::-webkit-scrollbar {
             display: none;
         }
+
         .carrusel-contenedor:active {
             cursor: grabbing;
         }
@@ -178,7 +193,6 @@
             transform: scale(0.85);
         }
         
-        /* Tarjeta enfocada en el centro de la pantalla */
         .tarjeta-app.focused {
             opacity: 1;
             transform: scale(1.1) translateY(-10px);
@@ -199,10 +213,12 @@
             border: 1px solid #333;
             transition: transform 0.3s ease;
         }
+
         .tarjeta-app.focused .img-box {
             transform: scale(1.05);
             border-color: #ff0000;
         }
+
         .tarjeta-app img {
             width: 100%;
             height: 100%;
@@ -233,10 +249,12 @@
             opacity: 0;
             pointer-events: none;
         }
+
         .tarjeta-app.focused .btn-tutorial {
             opacity: 1;
             pointer-events: auto;
         }
+
         .btn-tutorial:hover {
             background: #ff0000;
             box-shadow: 0 0 20px #ff0000;
@@ -250,9 +268,9 @@
             letter-spacing: 3px;
         }
 
-        /* ==========================================
-           MODAL DE VIDEO FLOTANTE (APPLE STYLE)
-           ========================================== */
+        /* ==========================================================================
+           4. MODAL DE REPRODUCCIÓN FLOTANTE (ESTILO APPLE HOLOGRÁFICO)
+           ========================================================================== */
         .overlay-oculto {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -262,10 +280,12 @@
             transition: opacity 0.4s ease;
             z-index: 10000;
         }
+
         .overlay-oculto.activo {
             opacity: 1;
             pointer-events: auto;
         }
+
         .modal-holograma {
             background: #0a0a0a;
             border: 2px solid #ff0000;
@@ -276,18 +296,22 @@
             transform: scale(0.7);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
         .overlay-oculto.activo .modal-holograma {
             transform: scale(1);
         }
+
         #cerrar-modal {
             position: absolute; top: -15px; right: -15px;
             background: #ff0000; color: #fff; border: none;
             border-radius: 50%; width: 35px; height: 35px; cursor: pointer;
             box-shadow: 0 0 10px #ff0000; font-weight: bold; font-size: 16px;
         }
+
         .contenedor-video {
             position: relative; padding-bottom: 56.25%; height: 0;
         }
+
         .contenedor-video iframe {
             position: absolute; top:0; left:0; width:100%; height:100%; border-radius: 6px;
         }
@@ -295,11 +319,10 @@
 </head>
 <body>
 
-    <!-- BARRA DE PROGRESO DE LECTURA SCROLL -->
+    <!-- BARRA DE INTERFAZ DEL PROGRESO -->
     <div id="scroll-progress"></div>
 
-    <!-- MENÚ DE NAVEGACIÓN PRINCIPAL -->
+    <!-- MENÚ DE NAVEGACIÓN -->
     <nav>
         <a href="index.html">Inicio</a>
         <a href="juegos.html">Juegos</a>
-        <a href="aplicaciones.html" class="active">Aplicaciones</a>
