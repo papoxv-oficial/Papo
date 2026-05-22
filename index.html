@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>papoxv | Plataforma de Descargas Premium</title>
-    <!-- Iconos premium para redes sociales y categorías -->
+    <!-- Iconos premium -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -14,11 +14,11 @@
             color: #ffffff;
             font-family: 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
-            padding-top: 90px;
-            padding-bottom: 100px; /* Espacio extra para que el botón flotante no tape nada */
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* Centra el inicio verticalmente */
+            padding: 20px 20px 100px 20px; /* Espacio abajo para el footer fijo */
         }
 
         /* BARRA DE NAVEGACIÓN SUPERIOR FIJA */
@@ -56,17 +56,17 @@
         .container {
             width: 100%;
             max-width: 1200px;
-            padding: 0 20px;
+            padding: 0 10px;
         }
 
         /* SECCIONES INTERNAS */
         .main-section {
             display: none;
             width: 100%;
-            padding-top: 40px;
+            padding-top: 80px; /* Margen para no tapar con la barra de arriba */
         }
 
-        /* PANTALLA PRINCIPAL DE BIENVENIDA */
+        /* PANTALLA PRINCIPAL */
         .home-menu {
             display: flex;
             flex-direction: column;
@@ -75,7 +75,7 @@
             gap: 25px;
             width: 100%;
             max-width: 650px;
-            margin: 40px auto 0 auto;
+            margin: 0 auto;
         }
 
         .home-logo {
@@ -87,7 +87,7 @@
             letter-spacing: 3px;
         }
 
-        /* BOTONES GIGANTES EN EL INICIO */
+        /* BOTONES GIGANTES */
         .big-btn {
             width: 100%;
             background: rgba(15, 5, 5, 0.7);
@@ -118,7 +118,7 @@
             box-shadow: 0 0 25px #ff0000;
         }
 
-        /* DISEÑO DE LAS SECCIONES DE ARCHIVOS INTERNAS */
+        /* SECCIONES INTERNAS INTERIORES */
         .section-header {
             text-align: center;
             margin-bottom: 40px;
@@ -198,7 +198,7 @@
         .btn-tutorial { background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%); }
         .btn-download { background: linear-gradient(90deg, #9d4edd 0%, #7b2cbf 100%); }
 
-        /* 📸 DISEÑO DEL BOTÓN FLOTANTE DE INSTAGRAM */
+        /* 📸 INSTAGRAM FIJO ABAJO A LA DERECHA */
         .instagram-float {
             position: fixed;
             bottom: 20px;
@@ -214,29 +214,33 @@
             font-weight: bold;
             font-size: 0.95rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-            z-index: 999;
+            z-index: 2000; /* Asegura que se vea por encima de todo */
+            transition: transform 0.3s;
         }
 
         .instagram-float:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5);
         }
 
-        /* 📝 CORRECCIÓN DEL PIE DE PÁGINA */
+        /* 📝 PIE DE PÁGINA COMPLETAMENTE FIJO ABAJO */
         .footer {
-            margin-top: auto;
-            padding-top: 60px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(5, 0, 0, 0.9);
+            padding: 15px;
             font-size: 0.9rem;
             color: #777777;
             text-align: center;
-            letter-spacing: 0.5px;
+            border-top: 1px solid rgba(255, 0, 0, 0.1);
+            z-index: 1900;
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR FIJA (APARECE EN SECCIONES) -->
+    <!-- BARRA SUPERIOR FIJA -->
     <div id="topNavbar" class="navbar">
         <span class="nav-link" onclick="irAlInicioBase()">Inicio</span>
         <span id="nav-juegos" class="nav-link" onclick="navegarInterno('juegos', 'nav-juegos')">Juegos</span>
@@ -246,7 +250,7 @@
 
     <div class="container">
 
-        <!-- PÁGINA DE INICIO (PANTALLA LIMPIA DE CATEGORÍAS) -->
+        <!-- INICIO -->
         <div id="inicio" style="display: block; width: 100%;">
             <div class="home-menu">
                 <div class="home-logo">PAPOXV</div>
@@ -298,4 +302,3 @@
                     </div>
                     <img class="card-img" src="https://flaticon.com" alt="Icono">
                     <div class="btn-group">
-                        <a href="#" class="btn-action btn-tutorial"><i class="fas fa-eye"></i> Ver Tutorial</a>
