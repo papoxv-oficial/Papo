@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAPOXV | Inicio</title>
-      <style>
-        /* Reseteo básico */
+    <style>
         * { 
             box-sizing: border-box; 
             margin: 0; 
             padding: 0; 
         }
         
-        /* Fondo original con animación de partículas */
         body { 
             background: radial-gradient(circle, #2a0000 0%, #050000 100%); 
             color: #ffffff; 
@@ -21,13 +19,12 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            justify-content: center; 
-            padding: 20px; 
+            justify-content: flex-start; 
+            padding: 60px 20px; 
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Capa animada de partículas rojas */
         body::before {
             content: "";
             position: fixed;
@@ -50,7 +47,6 @@
             to { background-position: 0 -300px, 50px -350px; }
         }
         
-        /* Título PAPOXV con efecto neón rojo original */
         .logo { 
             font-size: 4rem; 
             font-weight: 900; 
@@ -62,7 +58,6 @@
             z-index: 2;
         }
         
-        /* Contenedor de los botones */
         .menu-container { 
             display: flex; 
             flex-direction: column; 
@@ -70,9 +65,9 @@
             width: 100%; 
             max-width: 600px; 
             z-index: 2;
+            margin-bottom: 50px;
         }
         
-        /* BOTONES ORIGINALES */
         .menu-btn { 
             display: block; 
             width: 100%; 
@@ -96,10 +91,80 @@
             box-shadow: 0 0 25px #ff0000; 
             background: rgba(42, 0, 0, 0.6); 
         }
+
+        /* Nueva sección de novedades vacana */
+        .destacados-section {
+            width: 100%;
+            max-width: 600px;
+            z-index: 2;
+            margin-bottom: 30px;
+        }
+
+        .destacados-title {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff4d4d;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .destacados-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .destacado-card {
+            display: flex;
+            align-items: center;
+            background: #000000;
+            border: 1px solid rgba(255, 0, 0, 0.4);
+            border-radius: 12px;
+            padding: 15px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .destacado-card:hover {
+            border-color: #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            transform: translateX(5px);
+        }
+
+        .destacado-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-right: 15px;
+        }
+
+        .destacado-info {
+            flex-grow: 1;
+        }
+
+        .destacado-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .destacado-tag {
+            font-size: 0.8rem;
+            color: #ff0000;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .destacado-flecha {
+            font-size: 1.2rem;
+            color: #ff0000;
+            margin-left: 10px;
+        }
         
-        /* Pie de página original */
         footer { 
-            margin-top: 50px; 
+            margin-top: 30px; 
             font-size: 0.85rem; 
             color: #555555; 
             text-align: center; 
@@ -109,26 +174,51 @@
 </head>
 <body>
 
-    <!-- Tu logotipo original -->
     <div class="logo">PAPOXV</div>
 
-    <!-- Menú de navegación principal -->
     <div class="menu-container">
-        <a href="juegos.html" class="menu-btn">Juegos🎮</a>
-        <a href="aplicaciones.html" class="menu-btn">Aplicaciones ⚙</a>
-        <a href="pc.html" class="menu-btn">Windows & Office💿</a>
+        <a href="juegos.html" class="menu-btn">Juegos 🎮</a>
+        <a href="aplicaciones.html" class="menu-btn">Aplicaciones ⚙️</a>
+        <a href="pc.html" class="menu-btn">Windows & Office 💿</a>
     </div>
 
-    <!-- Tu pie de página original -->
+    <!-- SECCIÓN DE NOVEDADES AGREGADA -->
+    <div class="destacados-section">
+        <div class="destacados-title">🔥 LO MÁS POPULAR</div>
+        <div class="destacados-grid">
+            
+            <!-- Item 1: Directo a Juegos -->
+            <a href="juegos.html" class="destacado-card">
+                <img class="destacado-img" src="minecraft.png" alt="Minecraft">
+                <div class="destacado-info">
+                    <div class="destacado-name">Minecraft Shaders</div>
+                    <div class="destacado-tag">Juegos</div>
+                </div>
+                <div class="destacado-flecha">➜</div>
+            </a>
+
+            <!-- Item 2: Directo a Aplicaciones -->
+            <a href="aplicaciones.html" class="destacado-card">
+                <img class="destacado-img" src="capcut.png" alt="CapCut">
+                <div class="destacado-info">
+                    <div class="destacado-name">CapCut Pro</div>
+                    <div class="destacado-tag">Aplicaciones</div>
+                </div>
+                <div class="destacado-flecha">➜</div>
+            </a>
+
+        </div>
+    </div>
+
     <footer>
         © 2026 papoxv | Todos los derechos reservados.
     </footer>
-          <!-- Botón Flotante con el Degradado de Color Original de Instagram -->
-    <a href="https://www.instagram.com/evererodriguez27/" target="_blank" style="position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 15px rgba(214, 36, 159, 0.4); transition: all 0.3s ease; z-index: 2000;" onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 25px rgba(214, 36, 159, 0.8)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(214, 36, 159, 0.4)';">
-        <!-- Logo oficial de Instagram en color blanco encima del fondo de color -->
+
+    <!-- Botón Flotante con el Degradado de Color Original de Instagram -->
+    <a href="https://instagram.com" target="_blank" style="position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 15px rgba(214, 36, 159, 0.4); transition: all 0.3s ease; z-index: 2000;" onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 25px rgba(214, 36, 159, 0.8)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(214, 36, 159, 0.4)';">
         <svg xmlns="http://w3.org" viewBox="0 0 448 512" style="width: 30px; height: 30px; fill: #ffffff;"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2s34.4-58 36.2-93.9c2.1-37 2.1-147.8 0-184.8zM402.4 392.5c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
     </a>
 
-
 </body>
 </html>
+
