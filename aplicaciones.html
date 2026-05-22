@@ -38,7 +38,6 @@
         <a href="pc.html" class="nav-link">Windows & Office</a>
     </div>
 
-    <!-- BUSCADOR -->
     <div class="search-container">
         <input type="text" class="search-input" placeholder="🔍 Buscar aplicación...">
     </div>
@@ -87,6 +86,15 @@
         </a>
     </div>
 
+    <script>
+        document.querySelector('.search-input').addEventListener('input', function(e) {
+            let texto = e.target.value.toLowerCase().trim();
+            document.querySelectorAll('.card').forEach(function(card) {
+                let titulo = card.querySelector('.card-title').textContent.toLowerCase();
+                card.style.display = titulo.includes(texto) ? 'flex' : 'none';
+            });
+        });
+    </script>
 </body>
 </html>
 
