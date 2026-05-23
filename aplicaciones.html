@@ -253,12 +253,6 @@
                 }
             });
 
-            // Al retirar el mouse de la tarjeta, regresa a tu hermoso degradado Rojo original
-            card.addEventListener('mouseleave', () => {
-                document.body.style.background = "radial-gradient(circle, #2a0000 0%, #050000 100%)";
-            });
-        });
-
         // 3. LÓGICA DE NOTIFICACIONES TOAST
         document.querySelectorAll('.btn-notify').forEach(button => {
             button.addEventListener('click', function(e) {
