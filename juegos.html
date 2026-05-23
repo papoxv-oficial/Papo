@@ -87,3 +87,57 @@
                 const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left - (rect.width / 2); const y = e.clientY - rect.top - (rect.height / 2);
                 card.style.transform = `scale(1.12) rotateX(${(-y / (rect.height / 2)) * 12}deg) rotateY(${(x / (rect.width / 2)) * 12}deg) translateZ(20px)`;
             });
+       </div>     
+ <div class="back-home-container"><a href="index.html" class="btn-back-home"><i class="fas fa-home"></i> Volver al Inicio</a></div>
+    <script>
+        const carousel = document.getElementById('carousel'); const cards = document.querySelectorAll('.card');
+        function updateCarouselFocus() {
+            const screenCenter = window.innerWidth / 2; let closestCard = null; let minDistance = Infinity;
+            cards.forEach(card => {
+                const cardRect = card.getBoundingClientRect(); const cardCenter = cardRect.left + cardRect.width / 2; const distance = Math.abs(screenCenter - cardCenter);
+                card.classList.remove('active-card'); card.style.transform = 'scale(0.85) rotateX(0deg) rotateY(0deg) translateZ(0)';
+                if (distance < minDistance) { minDistance = distance; closestCard = card; }
+            });
+            if (closestCard) { closestCard.classList.add('active-card'); closestCard.style.transform = 'scale(1.12) rotateX(0deg) rotateY(0deg) translateZ(20px)'; }
+        }
+        carousel.addEventListener('scroll', updateCarouselFocus); window.addEventListener('resize', updateCarouselFocus); setTimeout(updateCarouselFocus, 100);
+        let isDown = false; let startX; let scrollLeft;
+        carousel.addEventListener('mousedown', (e) => { isDown = true; startX = e.pageX - carousel.offsetLeft; scrollLeft = carousel.scrollLeft; });
+        carousel.addEventListener('mouseleave', () => isDown = false); carousel.addEventListener('mouseup', () => isDown = false);
+        carousel.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - carousel.offsetLeft; const walk = (x - startX) * 1.5; carousel.scrollLeft = scrollLeft - walk; updateCarouselFocus(); });
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (!card.classList.contains('active-card')) return;
+                const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left - (rect.width / 2); const y = e.clientY - rect.top - (rect.height / 2);
+                card.style.transform = `scale(1.12) rotateX(${(-y / (rect.height / 2)) * 12}deg) rotateY(${(x / (rect.width / 2)) * 12}deg) translateZ(20px)`;
+            });
+            card.addEventListener('mouseleave', () => { if (card.classList.contains('active-card')) { card.style.transform = 'scale(1.12) rotateX(0deg) rotateY(0deg) translateZ(20px)'; } });
+        });
+
+        document.querySelectorAll('.btn-action').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                if (btn.closest('.card').classList.contains('active-card')) {
+                    btn.style.transition = "all 0.3s ease"; btn.style.transform = "translateZ(50px) scale(1.05)";
+                    btn.style.boxShadow = btn.classList.contains('btn-tutorial') ? "0 10px 25px rgba(0, 162, 255, 0.8)" : "0 10px 25px rgba(162, 0, 255, 0.8)";
+                }
+            });
+            btn.addEventListener('mouseleave', () => { btn.style.transform = "translateZ(20px) scale(1)"; btn.style.boxShadow = "none"; });
+        });
+
+        function ejecutarBusqueda() {
+            let input = document.getElementById('buscador-campo').value.toLowerCase().trim();
+            cards.forEach(card => { let titleElement = card.querySelector('.card-title'); if (titleElement) { card.style.display = titleElement.textContent.toLowerCase().includes(input) ? "flex" : "none"; } });
+            updateCarouselFocus();
+        }
+        document.querySelectorAll('.btn-notify').forEach(button => {
+            button.addEventListener('click', function(e) {
+                let appName = this.getAttribute('data-name'); let container = document.getElementById('notification-container');
+                let toast = document.createElement('div'); toast.className = 'toast-notification'; toast.innerHTML = `⏳ Preparando descarga de ${appName}...`;
+                container.appendChild(toast); setTimeout(() => toast.classList.add('show'), 50);
+                setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 300); }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>
