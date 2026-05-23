@@ -45,19 +45,16 @@
     <div class="main-content">
         <div class="carousel-wrapper" id="carousel">
             <div class="grid-container" id="grid">
-                <!-- 1. Minecraft -->
                 <div class="card">
                     <div><div class="card-title">Minecraft Shaders</div><div class="card-subtitle">(ULTRA HD)</div></div>
                     <div class="img-container"><img class="card-img" src="minecraft.png" alt="Minecraft"></div>
                     <div class="btn-group"><a href="#" class="btn-action btn-tutorial"><i class="fas fa-play-circle"></i> Ver Tutorial</a><a href="#" class="btn-action btn-download btn-notify" data-name="Minecraft Shaders"><i class="fas fa-download"></i> Descargar</a></div>
                 </div>
-                <!-- 2. Free Fire -->
                 <div class="card">
                     <div><div class="card-title">Free Fire Max</div><div class="card-subtitle">(AUTO APUNTADO)</div></div>
                     <div class="img-container"><img class="card-img" src="freefire.png" alt="Free Fire"></div>
                     <div class="btn-group"><a href="#" class="btn-action btn-tutorial"><i class="fas fa-play-circle"></i> Ver Tutorial</a><a href="#" class="btn-action btn-download btn-notify" data-name="Free Fire Max"><i class="fas fa-download"></i> Descargar</a></div>
                 </div>
-                <!-- 3. GTA V -->
                 <div class="card">
                     <div><div class="card-title">GTA V Mobile</div><div class="card-subtitle">(ANDROID BETA)</div></div>
                     <div class="img-container"><img class="card-img" src="gtav.png" alt="GTA V"></div>
@@ -78,11 +75,12 @@
             });
             if (closestCard) { closestCard.classList.add('active-card'); closestCard.style.transform = 'scale(1.12) rotateX(0deg) rotateY(0deg) translateZ(20px)'; }
         }
-        carousel.addEventListener('scroll', updateCarouselFocus); window.addEventListener('resize', updateCarouselFocus); setTimeout(updateCarouselFocus, 100);
+        carousel.addEventListener('scroll', updateCarouselFocus); window.addEventListener('resize', updateCarouselFocus);
         let isDown = false; let startX; let scrollLeft;
         carousel.addEventListener('mousedown', (e) => { isDown = true; startX = e.pageX - carousel.offsetLeft; scrollLeft = carousel.scrollLeft; });
         carousel.addEventListener('mouseleave', () => isDown = false); carousel.addEventListener('mouseup', () => isDown = false);
-        carousel.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - carousel.offsetLeft; const walk = (x - startX) * 1.5; carousel.scrollLeft = scrollLeft - walk; updateCarouselFocus(); });
+        carousel.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - carousel.offsetLeft; carousel.scrollLeft = scrollLeft - (x - startX) * 1.5; updateCarouselFocus(); });
+        updateCarouselFocus(); window.onload = updateCarouselFocus; setTimeout(updateCarouselFocus, 300);
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 if (!card.classList.contains('active-card')) return;
@@ -90,12 +88,19 @@
                 card.style.transform = `scale(1.12) rotateX(${(-y / (rect.height / 2)) * 12}deg) rotateY(${(x / (rect.width / 2)) * 12}deg) translateZ(20px)`;
             });
         carousel.addEventListener('mouseleave', () => isDown = false); carousel.addEventListener('mouseup', () => isDown = false);
-        carousel.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - carousel.offsetLeft; const walk = (x - startX) * 1.5; carousel.scrollLeft = scrollLeft - walk; updateCarouselFocus(); });
+        carousel.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - carousel.offsetLeft; carousel.scrollLeft = scrollLeft - (x - startX) * 1.5; updateCarouselFocus(); });
         
+        // EFECTO INCLINACIÓN 3D INTERACTIVA RESTAURADO
         cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (!card.classList.contains('active-card')) return;
+                const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left - (rect.width / 2); const y = e.clientY - rect.top - (rect.height / 2);
+                card.style.transform = `scale(1.12) rotateX(${(-y / (rect.height / 2)) * 12}deg) rotateY(${(x / (rect.width / 2)) * 12}deg) translateZ(20px)`;
+            });
             card.addEventListener('mouseleave', () => { if (card.classList.contains('active-card')) { card.style.transform = 'scale(1.12) rotateX(0deg) rotateY(0deg) translateZ(20px)'; } });
         });
 
+        // EFECTO NEÓN E INCLINACIÓN EN LOS BOTONES
         document.querySelectorAll('.btn-action').forEach(btn => {
             btn.addEventListener('mouseenter', () => {
                 if (btn.closest('.card').classList.contains('active-card')) {
@@ -106,6 +111,7 @@
             btn.addEventListener('mouseleave', () => { btn.style.transform = "translateZ(20px) scale(1)"; btn.style.boxShadow = "none"; });
         });
 
+        // FUNCIONES DE BÚSQUEDA Y TOAST NOTIFICACIONES
         function ejecutarBusqueda() {
             let input = document.getElementById('buscador-campo').value.toLowerCase().trim();
             cards.forEach(card => { let titleElement = card.querySelector('.card-title'); if (titleElement) { card.style.display = titleElement.textContent.toLowerCase().includes(input) ? "flex" : "none"; } });
