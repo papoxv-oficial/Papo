@@ -79,7 +79,6 @@
             background: rgba(15, 5, 5, 0.8); 
         }
         
-        /* REJILLA CORREGIDA: Alinea en orden hacia la izquierda */
         .grid-container { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
@@ -88,7 +87,6 @@
             margin: 0 auto; 
         }
         
-        /* TARJETA OSCURA EN PERSPECTIVA 3D */
         .card { 
             background: rgba(15, 5, 5, 0.5); 
             border: 2px solid #ff0000; 
@@ -99,7 +97,7 @@
             flex-direction: column; 
             align-items: center; 
             text-align: center; 
-            height: 420px; 
+            height: 440px; 
             width: 100%; 
             max-width: 340px; 
             justify-content: space-between; 
@@ -110,7 +108,16 @@
         
         .card-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 2px; transform: translateZ(20px); }
         .card-subtitle { font-size: 0.8rem; color: #ff0000; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; transform: translateZ(15px); }
-        .card-img { width: 100%; max-width: 140px; height: 80px; object-fit: contain; margin: 15px 0; transform: translateZ(25px); }
+        
+        /* Modificado para que los logos se adapten de forma consistente y grande */
+        .card-img { 
+            width: 100%; 
+            max-width: 180px; 
+            height: 120px; 
+            object-fit: contain; 
+            margin: 10px 0; 
+            transform: translateZ(25px); 
+        }
         
         .btn-group { width: 100%; display: flex; flex-direction: column; gap: 12px; transform-style: preserve-3d; transform: translateZ(15px); }
         .btn-action { display: block; width: 100%; padding: 12px; color: #ffffff; text-decoration: none; font-weight: bold; font-size: 0.9rem; border-radius: 15px; text-transform: uppercase; text-align: center; letter-spacing: 1px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease; }
@@ -137,7 +144,6 @@
     
     <div id="notification-container"></div>
     
-    <!-- BARRA DE BÚSQUEDA VINCULADA NATIVAMENTE (ONINPUT) -->
     <div class="search-container">
         <input type="text" class="search-input" id="buscador-campo" oninput="ejecutarBusqueda()" placeholder="🔍 Buscar aplicación...">
     </div>
@@ -149,118 +155,78 @@
                 <div class="card-title">CapCut Pro</div>
                 <div class="card-subtitle">(Premium Mod)</div>
             </div>
-            <img class="card-img" src="capcut.png" alt="CapCut">
+            <img class="card-img" src="https://sftcdn.net" alt="CapCut">
             <div class="btn-group">
                 <a href="#" class="btn-action btn-tutorial"><i class="fas fa-play-circle"></i> Ver Tutorial</a>
                 <a href="#" class="btn-action btn-download btn-notify" data-name="CapCut Pro"><i class="fas fa-download"></i> Descargar</a>
             </div>
         </div>
+
         <!-- 2. TikTok -->
         <div class="card">
             <div>
                 <div class="card-title">TikTok Plus</div>
                 <div class="card-subtitle">(No Watermark)</div>
             </div>
-            <img class="card-img" src="tiktok.png" alt="TikTok">
+            <img class="card-img" src="https://flaticon.com" alt="TikTok">
             <div class="btn-group">
                 <a href="#" class="btn-action btn-tutorial"><i class="fas fa-play-circle"></i> Ver Tutorial</a>
                 <a href="#" class="btn-action btn-download btn-notify" data-name="TikTok Plus"><i class="fas fa-download"></i> Descargar</a>
             </div>
         </div>
+
         <!-- 3. Loquendo -->
         <div class="card">
             <div>
                 <div class="card-title">Loquendo Voice</div>
                 <div class="card-subtitle">(PC)</div>
             </div>
-           <img class="card-img" src="https://static.wikia.nocookie.net/waleedarix/images/c/c2/Loquendo_Logo.png/revision/latest?cb=20240508185435" alt="loquendo">
+            <img class="card-img" src="https://postimg.cc" alt="Loquendo">
+            <div class="btn-group">
                 <a href="#" class="btn-action btn-tutorial"><i class="fas fa-play-circle"></i> Ver Tutorial</a>
-                <a href="https://cuty.io/tfvJsHSet" class="btn-action btn-download btn-notify" data-name="Loquendo Voice"><i class="fas fa-download"></i> Descargar</a>
+                <a href="https://cuty.io" class="btn-action btn-download btn-notify" data-name="Loquendo Voice"><i class="fas fa-download"></i> Descargar</a>
             </div>
         </div>
-       <!-- spotyfai -->
+
+        <!-- 4. Spotify Plus -->
         <div class="card">
             <div>
-                <div class="card-title">spotifay</div>
+                <div class="card-title">Spotify Plus</div>
                 <div class="card-subtitle">(PC)</div>
             </div>
-           <img class="card-img" src="https://static.wikia.nocookie.net/waleedarix/images/c/c2/Loquendo_Logo.png/revision/latest?cb=20240508185435" alt="loquendo">
+            <img class="card-img" src="https://flaticon.com" alt="Spotify">
+            <div class="btn-group">
                 <a href="#" class="btn-action btn-tutorial"><i class="fas fa-play-circle"></i> Ver Tutorial</a>
-                <a href="https://cuty.io/tfvJsHSet" class="btn-action btn-download btn-notify" data-name="Loquendo Voice"><i class="fas fa-download"></i> Descargar</a>
+                <a href="#" class="btn-action btn-download btn-notify" data-name="Spotify Plus"><i class="fas fa-download"></i> Descargar</a>
             </div>
         </div>
     </div>
 
-    <div style="display: flex; justify-content: center; margin: 60px 0 20px 0; width: 100%;">
-        <a href="index.html" style="display: inline-flex; align-items: center; padding: 15px 35px; background: #000000; border: 2px solid #ff0000; border-radius: 15px; color: #ffffff; font-weight: bold; text-decoration: none; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; box-shadow: 0 0 20px rgba(255, 0, 0, 0.6); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 30px #ff0000';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 20px rgba(255, 0, 0, 0.6)';">
-            Volver al inicio
-        </a>
-    </div>
-<script type="text/javascript">
-    
-    // 1. FILTRADO GLOBAL CORREGIDO (LEE TODO EL TEXTO INTERNO SIN IMPORTAR CONTENEDORES)
-    function ejecutarBusqueda() {
-        var filtroTexto = document.getElementById('buscador-campo').value.toLowerCase().trim();
-        var todasLasCards = document.querySelectorAll('.grid-container .card');
-        
-        todasLasCards.forEach(function(card) {
-            var todoElTexto = card.innerText.toLowerCase();
-            if (todoElTexto.indexOf(filtroTexto) > -1) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-
-    // 2. INTERACCIÓN DE ROTACIÓN 3D SEGUIDORA DEL RATÓN
-    document.querySelectorAll('.card').forEach(function(card) {
-        card.addEventListener('mousemove', function(e) {
-            var area = this.getBoundingClientRect();
-            var calculoX = e.clientX - area.left - (area.width / 2);
-            var calculoY = e.clientY - area.top - (area.height / 2);
-            var gradoX = -(calculoY / area.height) * 20;
-            var gradoY = (calculoX / area.width) * 20;
+    <script>
+        function ejecutarBusqueda() {
+            let input = document.getElementById('buscador-campo').value.toLowerCase();
+            let cards = document.getElementsByClassName('card');
             
-            this.style.transform = "rotateX(" + gradoX + "deg) rotateY(" + gradoY + "deg) scale(1.03)";
-            this.style.boxShadow = "0 15px 35px rgba(255, 0, 0, 0.6)";
-            this.style.borderColor = "#ff4d4d";
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-            this.style.boxShadow = "0 0 20px rgba(255, 0, 0, 0.4)";
-            this.style.borderColor = "#ff0000";
-        });
-    });
-
-    // 3. NOTIFICACIONES ALERTA AL PRESIONAR DESCARGAR
-    document.querySelectorAll('.btn-notify').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            var appNombre = this.getAttribute('data-name');
-            var cajaNotificaciones = document.getElementById('notification-container');
-            if (cajaNotificaciones) {
-                var toast = document.createElement('div');
-                toast.className = 'toast-notification';
-                toast.innerHTML = '🚀 Preparando descarga de ' + appNombre + '...';
-                cajaNotificaciones.appendChild(toast);
-                
-                setTimeout(function() { toast.classList.add('show'); }, 50);
-                setTimeout(function() {
-                    toast.classList.remove('show');
-                    setTimeout(function() { toast.remove(); }, 300);
-                }, 3000);
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getElementsByClassName('card-title')[0].innerText.toLowerCase();
+                if (title.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
             }
-        });
-    });
+        }
 
-    // 4. AUTO-OCULTADO DE ICONOS ROTOS
-    document.querySelectorAll(".card-img").forEach(function(img) {
-        img.addEventListener("error", function() {
-            this.style.display = "none";
-        });
-    });
-</script>
-</body>
-</html>
+        document.querySelectorAll('.btn-notify').forEach(button => {
+            button.addEventListener('click', function(e) {
+                let appName = this.getAttribute('data-name');
+                let container = document.getElementById('notification-container');
+                
+                let toast = document.createElement('div');
+                toast.className = 'toast-notification';
+                toast.innerHTML = `⏳ Preparando descarga de ${appName}...`;
+                
+                container.appendChild(toast);
+                setTimeout(() => toast.classList.add('show'), 50);
+                
+                setTimeout(() => {
